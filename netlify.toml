@@ -1,0 +1,26 @@
+[build]
+  command   = "bun run build"
+  publish   = "dist"
+
+# SPA catch-all — any path that doesn't match a static file serves index.html
+[[redirects]]
+  from   = "/*"
+  to     = "/index.html"
+  status = 200
+
+# Long-lived cache for Vite's content-hashed assets
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# No cache for the HTML entry point and manifest
+[[headers]]
+  for = "/*.html"
+  [headers.values]
+    Cache-Control = "no-cache"
+
+[[headers]]
+  for = "/site.webmanifest"
+  [headers.values]
+    Cache-Control = "no-cache"

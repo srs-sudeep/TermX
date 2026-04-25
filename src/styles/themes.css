@@ -1,0 +1,28 @@
+/* ─────────────────────────────────────────────────────────────────────────────
+   themes.css
+   Default CSS variable values (Dracula palette).
+   themeManager.applyTheme() overwrites these on <html> at runtime.
+
+   Do NOT hardcode colors in component files. Always reference via var(--*).
+   ─────────────────────────────────────────────────────────────────────────── */
+
+:root {
+  /* ── Colors (Dracula defaults) ─────────────────────────────────────────── */
+  --bg: #282a36;
+  --fg: #f8f8f2;
+  --cursor: #f8f8f2;
+  --prompt: #50fa7b;
+  --accent: #bd93f9;
+  --success: #50fa7b;
+  --error: #ff5555;
+  --warning: #f1fa8c;
+  --info: #8be9fd;
+  --muted: #6272a4;
+  --selection: #44475a;
+  --border: #44475a;
+
+  /* ── Typography ────────────────────────────────────────────────────────── */
+  --font-family: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', 'Consolas', monospace;
+  --font-size-base: 14px;
+  --line-height-base: 1.6;
+}
