@@ -1,4 +1,4 @@
-import { Settings } from 'lucide-react';
+import { Settings, Folder, Search } from 'lucide-react';
 import { userConfig } from '@/config';
 
 interface TitleBarProps {
@@ -7,40 +7,91 @@ interface TitleBarProps {
 }
 
 /**
- * macOS-style terminal title bar with decorative traffic-light buttons
- * and a settings gear button.
+ * macOS-style terminal title bar.
  *
- * The traffic lights are purely cosmetic (`aria-hidden`) — they have no
- * close/minimize/fullscreen behaviour.
+ * - Decorative traffic-light buttons on the left (purely cosmetic; aria-hidden).
+ * - Centered window title showing `user@host` along with a small "tab"
+ *   pill that shows the current path — gives the title bar the feel of a
+ *   real terminal window with a single open tab.
+ * - Settings gear button on the right opens the settings modal via `onGearClick`.
  *
- * The gear button opens the settings modal via `onGearClick`.
+ * The bar is sticky at the top of the viewport and reserves a comfortable
+ * height for click targets on touch devices.
  */
 export function TitleBar({ onGearClick }: TitleBarProps) {
-  const { user, host } = userConfig.prompt;
+  const { user, host, path } = userConfig.prompt;
   const title = `${user}@${host}`;
 
   return (
-    <div className="flex items-center gap-3 px-4 py-2 bg-[var(--bg)] border-b border-[var(--border)] select-none flex-shrink-0">
+    <header
+      className="
+        relative flex items-center gap-3 px-4 py-2.5
+        bg-[var(--bg)]/95 backdrop-blur supports-[backdrop-filter]:bg-[var(--bg)]/80
+        border-b border-[var(--border)]
+        select-none flex-shrink-0
+      "
+      role="banner"
+    >
       {/* Traffic lights */}
       <div className="flex items-center gap-1.5" aria-hidden="true">
-        <span className="inline-block w-3 h-3 rounded-full bg-[#ff5f57]" />
-        <span className="inline-block w-3 h-3 rounded-full bg-[#ffbd2e]" />
-        <span className="inline-block w-3 h-3 rounded-full bg-[#28c940]" />
+        <span className="inline-block w-3 h-3 rounded-full bg-[#ff5f57] shadow-[inset_0_0_0_1px_rgba(0,0,0,0.15)]" />
+        <span className="inline-block w-3 h-3 rounded-full bg-[#ffbd2e] shadow-[inset_0_0_0_1px_rgba(0,0,0,0.15)]" />
+        <span className="inline-block w-3 h-3 rounded-full bg-[#28c940] shadow-[inset_0_0_0_1px_rgba(0,0,0,0.15)]" />
       </div>
 
-      {/* Window title */}
-      <span className="flex-1 text-center text-[0.85em] text-[var(--muted)]">
-        {title}
-      </span>
-
-      {/* Settings gear button */}
-      <button
-        onClick={onGearClick}
-        className="p-1 text-[var(--muted)] hover:text-[var(--fg)] transition-colors focus:outline-none focus-visible:ring-1 focus-visible:ring-[var(--accent)] rounded"
-        aria-label="Open settings"
+      {/* Tab pill — shows the current shell "tab" (host:path).
+          On narrow viewports the path collapses to keep things tidy. */}
+      <div
+        className="
+          absolute left-1/2 -translate-x-1/2
+          flex items-center gap-2 px-3 py-1
+          bg-[var(--selection)]/40 border border-[var(--border)]
+          rounded-md text-[0.78em] font-mono
+          text-[var(--muted)]
+          max-w-[60vw] truncate
+        "
       >
-        <Settings size={14} aria-hidden="true" />
-      </button>
-    </div>
+        <Folder size={11} aria-hidden="true" className="opacity-70" />
+        <span className="truncate">
+          <span className="text-[var(--fg)]">{title}</span>
+          <span className="opacity-60 mx-1">:</span>
+          <span className="text-[var(--accent)]">{path}</span>
+        </span>
+      </div>
+
+      {/* Right side — search hint + settings */}
+      <div className="ml-auto flex items-center gap-1.5">
+        <button
+          onClick={onGearClick}
+          className="
+            hidden sm:flex items-center gap-1.5 px-2 py-1 rounded
+            text-[0.72em] font-mono text-[var(--muted)]
+            border border-[var(--border)]
+            hover:text-[var(--fg)] hover:border-[var(--muted)]
+            transition-colors
+            focus:outline-none focus-visible:ring-1 focus-visible:ring-[var(--accent)]
+          "
+          aria-label="Open settings"
+          title="Open settings"
+        >
+          <Search size={10} aria-hidden="true" />
+          <span>type a command</span>
+        </button>
+
+        <button
+          onClick={onGearClick}
+          className="
+            p-1.5 rounded text-[var(--muted)]
+            hover:text-[var(--fg)] hover:bg-[var(--selection)]/40
+            transition-colors
+            focus:outline-none focus-visible:ring-1 focus-visible:ring-[var(--accent)]
+          "
+          aria-label="Open settings"
+          title="Settings"
+        >
+          <Settings size={14} aria-hidden="true" />
+        </button>
+      </div>
+    </header>
   );
 }

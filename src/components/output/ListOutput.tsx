@@ -1,68 +1,110 @@
+import { Fragment } from 'react';
 import type { ListItem } from '@/types';
-import { cn } from '@/lib/cn';
 
 interface ListOutputProps {
   items: ListItem[];
 }
 
 /**
- * Renders a bulleted list of items.
+ * Renders a structured list of items in a clean two-column grid:
  *
- * Indent levels:
- *  - `indent: 0` (default) — top-level. If no `value` is present, rendered as
- *    a bold accent-colored header (e.g. category names in `help`).
- *  - `indent: 1+` — indented entries with a `•` bullet.
+ *     label    -    description
+ *     label    -    description
  *
- * Items with a `url` render their label as a clickable link.
- * Items with a `value` render it in muted color after the label.
+ * Special item shapes:
+ *  - `indent: 0` with no `value`/`url` → bold accent header that spans
+ *    both columns (e.g. category names in `help`, "Contact" in `contact`).
+ *  - `label === ''` with no `value`/`url` → blank spacer line (visual gap
+ *    between groups; satisfies the help command's structural requirement
+ *    of having at least one indent-0 item).
+ *  - `url` present → label is rendered as a clickable, accent-colored link.
+ *  - `value` present → rendered in the right column. A subtle dash
+ *    separator is auto-inserted unless the value already begins with
+ *    a hyphen / en-dash / em-dash.
+ *
+ * The label column uses `max-content` so all labels share the same right
+ * edge — producing the aligned column look of the reference design.
  */
 export function ListOutput({ items }: ListOutputProps) {
   return (
-    <ul className="list-none space-y-0.5">
+    <div
+      className="grid gap-x-4 gap-y-0.5 max-w-full"
+      style={{ gridTemplateColumns: 'max-content minmax(0, 1fr)' }}
+    >
       {items.map((item, idx) => {
         const indent = item.indent ?? 0;
-        const isHeader = indent === 0 && !item.value && !item.url;
+        const isBlank = item.label === '' && !item.value && !item.url;
+        const isHeader = indent === 0 && !item.value && !item.url && !isBlank;
+        const indentRem = Math.max(0, indent - 1) * 1.25;
+
+        if (isBlank) {
+          return (
+            <div
+              key={idx}
+              className="col-span-2 h-3"
+              aria-hidden="true"
+            />
+          );
+        }
+
+        if (isHeader) {
+          return (
+            <div
+              key={idx}
+              className="col-span-2 mt-3 first:mt-0 mb-1 text-[var(--accent)] font-bold uppercase tracking-[0.18em] text-[0.78em]"
+            >
+              {item.label}
+            </div>
+          );
+        }
+
+        const labelEl = item.url ? (
+          <a
+            href={item.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-[var(--accent)] hover:underline focus-visible:underline whitespace-nowrap"
+          >
+            {item.label}
+          </a>
+        ) : (
+          <span className="text-[var(--prompt)] whitespace-nowrap">
+            {item.label}
+          </span>
+        );
+
+        const valueText = item.value ?? '';
+        // Suppress the auto-dash separator when the value already begins
+        // with a recognisable connector character — prevents output like
+        // `- => autocomplete` or `- — note`.
+        const valueStartsWithDash = /^\s*[-—–=→»➤]/.test(valueText);
 
         return (
-          <li
-            key={idx}
-            className="flex items-baseline gap-2"
-            style={{ paddingLeft: `${indent * 1.5}rem` }}
-          >
-            {/* Bullet — only for non-header items */}
-            {!isHeader && (
-              <span className="text-[var(--muted)] select-none flex-shrink-0">•</span>
-            )}
-
-            {/* Label — link, header, or plain text */}
-            {item.url ? (
-              <a
-                href={item.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-[var(--accent)] hover:underline focus-visible:underline"
-              >
-                {item.label}
-              </a>
-            ) : (
-              <span
-                className={cn(
-                  isHeader
-                    ? 'text-[var(--accent)] font-bold uppercase tracking-wider text-[0.85em]'
-                    : 'text-[var(--fg)]',
-                )}
-              >
-                {item.label}
-              </span>
-            )}
-
-            {/* Value — secondary description in muted color */}
-            {item.value && (
-              <span className="text-[var(--muted)]">{item.value}</span>
-            )}
-          </li>
+          <Fragment key={idx}>
+            <div
+              className="font-mono"
+              style={{ paddingLeft: `${indentRem}rem` }}
+            >
+              {labelEl}
+            </div>
+            <div className="text-[var(--fg)] min-w-0 break-words">
+              {item.value && (
+                <>
+                  {!valueStartsWithDash && (
+                    <span
+                      className="text-[var(--muted)] mr-2 select-none"
+                      aria-hidden="true"
+                    >
+                      -
+                    </span>
+                  )}
+                  <span>{item.value}</span>
+                </>
+              )}
+            </div>
+          </Fragment>
         );
       })}
-    </ul>
+    </div>
   );
 }

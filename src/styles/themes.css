@@ -7,19 +7,19 @@
    ─────────────────────────────────────────────────────────────────────────── */
 
 :root {
-  /* ── Colors (Dracula defaults) ─────────────────────────────────────────── */
-  --bg: #282a36;
-  --fg: #f8f8f2;
-  --cursor: #f8f8f2;
-  --prompt: #50fa7b;
-  --accent: #bd93f9;
-  --success: #50fa7b;
-  --error: #ff5555;
-  --warning: #f1fa8c;
-  --info: #8be9fd;
-  --muted: #6272a4;
-  --selection: #44475a;
-  --border: #44475a;
+  /* ── Colors (Termfolio defaults) ───────────────────────────────────────── */
+  --bg: #1f2430;
+  --fg: #cfd6e4;
+  --cursor: #5ccfe6;
+  --prompt: #bae67e;
+  --accent: #5ccfe6;
+  --success: #bae67e;
+  --error: #ff6e6e;
+  --warning: #ffd580;
+  --info: #73d0ff;
+  --muted: #8a9199;
+  --selection: #34455a;
+  --border: #2c3340;
 
   /* ── Typography ────────────────────────────────────────────────────────── */
   --font-family: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', 'Consolas', monospace;

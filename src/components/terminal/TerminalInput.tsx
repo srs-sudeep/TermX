@@ -101,11 +101,30 @@ export function TerminalInput({
 
   return (
     <div
-      className="flex items-center"
+      className="
+        group relative flex items-center
+        py-1
+        rounded
+        focus-within:bg-[var(--selection)]/15
+        transition-colors
+      "
       data-terminal-input
       onClick={focus}
     >
+      {/* Subtle left accent bar — brightens on focus to indicate the active
+          input line. Decorative; aria-hidden. */}
+      <span
+        aria-hidden="true"
+        className="
+          absolute left-[-14px] top-1 bottom-1 w-[2px]
+          bg-[var(--accent)]
+          opacity-0 group-focus-within:opacity-100
+          transition-opacity
+        "
+      />
+
       <Prompt config={promptConfig} />
+
       <input
         ref={inputRef}
         type="text"
@@ -119,11 +138,12 @@ export function TerminalInput({
         autoCapitalize="off"
         spellCheck={false}
         aria-label="Terminal command input"
+        placeholder={disabled ? 'processing…' : "type a command — try 'help'"}
         className={cn(
           'flex-1 min-w-0 bg-transparent border-0 outline-none',
           'font-mono text-[length:var(--font-size-base)] leading-[var(--line-height-base)]',
           'text-[var(--fg)] caret-[var(--cursor)]',
-          'placeholder:text-[var(--muted)]',
+          'placeholder:text-[var(--muted)]/60',
           disabled && 'opacity-50 cursor-not-allowed',
         )}
       />

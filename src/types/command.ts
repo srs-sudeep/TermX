@@ -107,6 +107,12 @@ export type CommandOutput =
    * Built from `buildBanner(config.user.name)` by `<OutputRenderer>`.
    */
   | { type: 'banner' }
+  /**
+   * Renders the hero `<WelcomeScreen />` — slanted name banner, portrait,
+   * intro, version, GitHub link, and "type help" hint. Used by the
+   * `welcome` command and on initial page load.
+   */
+  | { type: 'welcome' }
   /** Clears the terminal history. Handled by `useTerminal`, never rendered. */
   | { type: 'clear' }
   /** Opens a URL. Handled by `useTerminal`. */

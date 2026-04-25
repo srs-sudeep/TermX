@@ -10,6 +10,7 @@ import { ErrorOutput } from './ErrorOutput';
 import { JsxOutput } from './JsxOutput';
 import { AsciiBanner } from '@/components/effects/AsciiBanner';
 import { SettingsPanel } from '@/components/settings/SettingsPanel';
+import { WelcomeScreen } from './WelcomeScreen';
 
 // Heavy effect components are lazy-loaded so they don't bloat the initial bundle.
 const MatrixRain = lazy(() => import('@/components/effects/MatrixRain'));
@@ -57,6 +58,9 @@ export function OutputRenderer({ output }: OutputRendererProps) {
 
     case 'banner':
       return <AsciiBanner text={buildBanner(userConfig.user.name)} />;
+
+    case 'welcome':
+      return <WelcomeScreen />;
 
     case 'matrix':
       return (

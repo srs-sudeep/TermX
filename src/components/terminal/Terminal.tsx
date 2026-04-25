@@ -10,10 +10,11 @@ import { useTerminal } from '@/hooks/useTerminal';
 interface TerminalProps {
   /**
    * Whether the boot animation played before Terminal mounted.
-   * When `true` the banner was already shown in `<BootSequence>`;
-   * Terminal skips its own `banner` dispatch and only dispatches `help`.
-   * When `false` (boot was skipped / repeat visit) Terminal dispatches
-   * both `banner` and `help` so the user still sees them.
+   *
+   * Currently informational — the welcome screen is always rendered on
+   * mount regardless of this flag (the boot sequence does not pre-render
+   * the welcome screen). Kept on the props for backwards compatibility
+   * and so AppShell can pass it through without conditional logic.
    */
   bootRan?: boolean;
 }
@@ -30,7 +31,7 @@ interface TerminalProps {
  *  - Auto-scroll to bottom on new output
  *  - Global keyboard shortcuts (Ctrl+L, Ctrl+C, Ctrl+U)
  *  - Click-to-focus: clicking anywhere in the terminal focuses the input
- *  - Initial banner + help dispatch on first mount
+ *  - Initial `welcome` screen rendered synchronously on first mount
  */
 export function Terminal({ bootRan = false }: TerminalProps) {
   const { submit, isProcessing, registry } = useTerminal();
@@ -44,21 +45,27 @@ export function Terminal({ bootRan = false }: TerminalProps) {
   const containerRef = useScrollToBottom([history.length]);
 
   // ── Startup dispatch ────────────────────────────────────────────────────
-  // Always dispatch banner + help on first mount.
-  // When bootRan=true the BootSequence already showed the banner, so only
-  // dispatch help. When bootRan=false (boot was skipped or repeat visit)
-  // dispatch banner first so the user still sees it.
+  // Always show the `welcome` hero on first mount.
+  //
+  // Rather than going through `submit('welcome')` (which adds a placeholder
+  // entry + pending indicator that briefly flashes before resolving),
+  // we synthesize a completed history entry directly. This produces a
+  // smoother first paint: the user sees the prompt and the rendered
+  // welcome screen on the same frame.
+  //
+  // `bootRan` is intentionally unused but kept on the props contract for
+  // backwards compatibility with AppShell.
   useEffect(() => {
     if (hasDispatchedRef.current) return;
     hasDispatchedRef.current = true;
-
-    (async () => {
-      if (!bootRan) {
-        await submit('banner');
-      }
-      await submit('help');
-    })();
-  }, [submit, bootRan]);
+    void bootRan;
+    useTerminalStore.getState().appendOutput({
+      id: 'entry-init-welcome',
+      input: 'welcome',
+      output: { type: 'welcome' },
+      timestamp: Date.now(),
+    });
+  }, [bootRan]);
 
   // ── Keyboard shortcuts ──────────────────────────────────────────────────
   const handleClearScreen = useCallback(() => {
@@ -88,20 +95,26 @@ export function Terminal({ bootRan = false }: TerminalProps) {
   return (
     <div
       ref={containerRef}
-      className="flex-1 overflow-y-auto p-4 cursor-text"
+      className="
+        flex-1 overflow-y-auto cursor-text
+        scroll-smooth
+        bg-[var(--bg)]
+      "
       onClick={handleClick}
       role="region"
       aria-label="Terminal"
     >
-      <TerminalHistory />
-      <TerminalInput
-        promptConfig={userConfig.prompt}
-        value={inputValue}
-        onChange={setInputValue}
-        onSubmit={submit}
-        disabled={isProcessing}
-        registry={registry}
-      />
+      <div className="px-5 sm:px-7 py-5 max-w-[1100px] mx-auto">
+        <TerminalHistory />
+        <TerminalInput
+          promptConfig={userConfig.prompt}
+          value={inputValue}
+          onChange={setInputValue}
+          onSubmit={submit}
+          disabled={isProcessing}
+          registry={registry}
+        />
+      </div>
     </div>
   );
 }

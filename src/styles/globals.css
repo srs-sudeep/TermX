@@ -47,6 +47,17 @@
     line-height: var(--line-height-base);
     /* Prevent horizontal overflow from leaking outside the terminal viewport. */
     overflow-x: hidden;
+    /* Subtle CRT-ish vertical gradient so the chrome blends with the body. */
+    background-image: radial-gradient(
+      ellipse at top,
+      color-mix(in srgb, var(--accent) 4%, transparent),
+      transparent 60%
+    );
+    /* Smooth out font rendering on macOS / WebKit so the monospace banner
+       doesn't look pixelated at large sizes. */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
   }
 
   /* Make the terminal fill the whole viewport. */

@@ -15,7 +15,7 @@ export const settings = {
    * Must match a `name` in themes.config.ts.
    * The user can change it at runtime with: theme set <name>
    */
-  defaultTheme: 'dracula',
+  defaultTheme: 'termfolio',
 
   /**
    * Initial font size before localStorage is read.

@@ -22,6 +22,31 @@ export const themes: Theme[] = [
   // ── Dark themes ────────────────────────────────────────────────────────
 
   {
+    name: 'termfolio',
+    label: 'Termfolio',
+    mode: 'dark',
+    colors: {
+      bg: '#1f2430',         // deep slate-blue (matches reference design)
+      fg: '#cfd6e4',         // ≈ 11.0:1 ✓
+      cursor: '#5ccfe6',
+      prompt: '#bae67e',     // soft lime ≈ 10.5:1 ✓
+      accent: '#5ccfe6',     // teal ≈ 8.4:1 ✓
+      success: '#bae67e',
+      error: '#ff6e6e',      // ≈ 5.4:1 ✓
+      warning: '#ffd580',    // ≈ 11.2:1 ✓
+      info: '#73d0ff',       // ≈ 9.0:1 ✓
+      muted: '#8a9199',      // ≈ 5.0:1 ✓
+      selection: '#34455a',
+      border: '#2c3340',
+    },
+    font: {
+      family: '"JetBrains Mono", "Fira Code", "Cascadia Code", monospace',
+      size: '14px',
+      lineHeight: '1.6',
+    },
+  },
+
+  {
     name: 'dracula',
     label: 'Dracula',
     mode: 'dark',

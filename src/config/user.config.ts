@@ -12,100 +12,110 @@ import type { UserConfig } from '@/types';
 export const userConfig = {
   // ── Site metadata ──────────────────────────────────────────────────────
   meta: {
-    siteName: 'Sam Reyes — Terminal Portfolio',
+    siteName: 'Sudeep Ranjan Sahoo | iamsrs',
     siteDescription:
-      'Full-stack developer who builds fast, accessible web apps. Type "help" to explore.',
-    siteUrl: 'https://samreyes.dev',
+      'Creative Developer & Consultant focused on AI engineering, cloud architecture, and scalable enterprise software.',
+    siteUrl: 'https://www.iamsrs.com',
     ogImage: '/og-image.png',
   },
 
   // ── Personal details ───────────────────────────────────────────────────
   user: {
-    name: 'Sam Reyes',
-    handle: 'sam',       // shown in the terminal prompt
-    title: 'Full-Stack Engineer',
-    location: 'San Francisco, CA',
-    bio: 'I build fast, accessible web products — mostly in TypeScript, occasionally in Rust.',
-    timezone: 'America/Los_Angeles',
+    name: 'Sudeep Ranjan Sahoo',
+    handle: 'srs',       // shown in the terminal prompt
+    title: 'Business Architecture Analyst | AI Engineering & Cloud Architecture',
+    location: 'Tokyo, Japan',
+    bio: 'Computer Science engineer building AI-first systems, cloud-native architecture, and high-performance full-stack products.',
+    timezone: 'Asia/Tokyo',
     // avatar: '/avatar.png',  // uncomment and add your image to public/
   },
 
   // ── Prompt template ────────────────────────────────────────────────────
   // Tokens: {user}, {host}, {path}
-  // Rendered: sam@portfolio:~$
+  // Rendered: srs@iamsrs:~$
   prompt: {
     template: '{user}@{host}:{path}$ ',
-    user: 'sam',
-    host: 'portfolio',
+    user: 'srs',
+    host: 'iamsrs',
     path: '~',
   },
 
   // ── About ──────────────────────────────────────────────────────────────
   about: {
     paragraphs: [
-      "Hey, I'm Sam — a full-stack engineer with six years of experience shipping products people actually use. I care deeply about performance, accessibility, and developer experience.",
-      "I got into programming through game modding at age 14, fell in love with the web in college, and haven't looked back. These days I spend most of my time in TypeScript, React, and occasionally dip into Rust when I need something fast.",
-      "Outside of work I maintain a handful of open-source tools, contribute to the Bun ecosystem, and write a sporadic blog about things I wish existed when I was learning. If you want to collaborate or just chat — my inbox is open.",
+      "I am a Computer Science engineer passionate about AI engineering, cloud infrastructure, and full-stack web development. I enjoy solving hard technical problems from product architecture to deployment.",
+      "I currently work at Accenture Japan as a Business Architecture Analyst, where I focus on ERP systems, AI applications, and cloud-native architecture from requirements and design through delivery.",
+      "I build end-to-end products across web, AI, and systems: from interactive Next.js experiences and distributed applications to government-scale education and healthcare platforms. Outside work, I am learning Japanese, playing badminton, and writing long-form technical essays.",
     ],
   },
 
   // ── Projects ───────────────────────────────────────────────────────────
   projects: [
     {
-      slug: 'quill',
-      name: 'Quill',
-      tagline: 'A privacy-first markdown journaling app.',
+      slug: 'azure-devops-lifecycle',
+      name: 'Azure DevOps Lifecycle',
+      tagline: 'Massive-scale ingestion pipelines for enterprise workloads.',
       description:
-        'A minimalist PWA for journaling that stores everything locally in IndexedDB. No accounts, no servers, no telemetry. Supports full markdown, daily prompts, and end-to-end encryption for cloud sync via a user-supplied S3 bucket.',
-      tech: ['React', 'TypeScript', 'IndexedDB', 'PWA', 'Web Crypto API'],
+        'Architected fault-tolerant ingestion pipelines handling millions of requests per minute with low latency, infrastructure-as-code, and resilient CI/CD delivery.',
+      tech: ['Azure', 'Terraform', 'CI/CD', 'Docker'],
       links: {
-        live: 'https://quill.samreyes.dev',
-        repo: 'https://github.com/samreyes/quill',
+        live: 'https://www.iamsrs.com/work/azure-devops',
+      },
+      featured: true,
+      year: 2026,
+    },
+    {
+      slug: 'distributed-web-app',
+      name: 'Distributed Web App',
+      tagline: 'Edge-first global app with zero-downtime deploys.',
+      description:
+        'Led development of a globally distributed web application supporting thousands of concurrent users with edge architecture and production-grade reliability.',
+      tech: ['Next.js', 'Node.js', 'Edge Runtime'],
+      links: {
+        live: 'https://www.iamsrs.com/work/distributed-web-app',
+      },
+      featured: true,
+      year: 2026,
+    },
+    {
+      slug: 'project-vsk',
+      name: 'Project VSK',
+      tagline: 'Bilingual voice-first AI for statewide education.',
+      description:
+        'Built a ChatGPT-like AI agent with Hindi/English support and voice navigation to digitize public education workflows at state scale.',
+      tech: ['Python', 'LangChain', 'OpenAI', 'React', 'Node.js'],
+      links: {
+        live: 'https://www.iamsrs.com/work/project-vsk',
+      },
+      featured: true,
+      year: 2025,
+    },
+    {
+      slug: 'raytracer-studio',
+      name: 'RayTracer Studio',
+      tagline: 'CPU ray tracer in browser via WebAssembly.',
+      description:
+        'Developed a C++ ray tracing core compiled with Emscripten to WebAssembly, paired with a React + Vite control studio for interactive rendering and documentation.',
+      tech: ['C++', 'WebAssembly', 'Emscripten', 'React', 'Vite'],
+      links: {
+        live: 'https://www.iamsrs.com/work/cpp-ray-tracing',
+        repo: 'https://github.com/srs-sudeep/rayTracing',
+      },
+      featured: true,
+      year: 2025,
+    },
+    {
+      slug: 'seamless-campus',
+      name: 'Seamless Campus',
+      tagline: 'Unified smart-card campus automation platform.',
+      description:
+        'Built automation for IIT Bhilai with attendance, transactions, access control, and operational dashboards powered by smart card and RFID infrastructure.',
+      tech: ['React', 'Node.js', 'NFC/RFID', 'PostgreSQL', 'Redis'],
+      links: {
+        live: 'https://www.iamsrs.com/work/seamless-campus',
       },
       featured: true,
       year: 2024,
-    },
-    {
-      slug: 'nexus',
-      name: 'Nexus',
-      tagline: 'Aggregate your dev services into one dashboard.',
-      description:
-        'A browser extension + optional local proxy that pulls data from GitHub, Linear, Vercel, and PagerDuty into a single command-palette interface. Keyboard-first — never touch a sidebar again.',
-      tech: ['TypeScript', 'Svelte', 'WebExtensions API', 'REST', 'Node.js'],
-      links: {
-        repo: 'https://github.com/samreyes/nexus',
-        demo: 'https://www.youtube.com/watch?v=demo_nexus',
-      },
-      featured: true,
-      year: 2024,
-    },
-    {
-      slug: 'wavelength',
-      name: 'Wavelength',
-      tagline: 'Music recommendations that actually match your taste.',
-      description:
-        'A Spotify companion that builds a taste graph from your listening history and recommends tracks using cosine similarity on audio features. No ML framework — just math and the Web Audio API.',
-      tech: ['Next.js', 'TypeScript', 'Spotify API', 'D3.js', 'Vercel'],
-      links: {
-        live: 'https://wavelength.samreyes.dev',
-        repo: 'https://github.com/samreyes/wavelength',
-      },
-      featured: false,
-      year: 2023,
-    },
-    {
-      slug: 'drift',
-      name: 'Drift',
-      tagline: 'Lightweight reactive state for framework-agnostic UIs.',
-      description:
-        'A ~1 KB state management library with no dependencies. Uses Proxy traps for fine-grained reactivity without virtual DOM diffing. Includes a React adapter and a Svelte adapter. Written in pure TypeScript with a full test suite.',
-      tech: ['TypeScript', 'Proxy API', 'Vitest', 'Rollup'],
-      links: {
-        live: 'https://drift.samreyes.dev/docs',
-        repo: 'https://github.com/samreyes/drift',
-      },
-      featured: true,
-      year: 2023,
     },
   ],
 
@@ -115,33 +125,36 @@ export const userConfig = {
       name: 'Languages',
       items: [
         { name: 'TypeScript', level: 5 },
-        { name: 'JavaScript', level: 5 },
-        { name: 'Python', level: 4 },
+        { name: 'Python', level: 5 },
+        { name: 'C++', level: 5 },
+        { name: 'JavaScript', level: 4 },
         { name: 'Rust', level: 3 },
-        { name: 'SQL', level: 3 },
-        { name: 'Bash', level: 3 },
+        { name: 'Go', level: 3 },
+        { name: 'SQL', level: 4 },
       ],
     },
     {
-      name: 'Frontend',
+      name: 'Frontend & Interactive',
       items: [
         { name: 'React', level: 5 },
-        { name: 'Next.js', level: 4 },
+        { name: 'Next.js', level: 5 },
         { name: 'TailwindCSS', level: 5 },
-        { name: 'Framer Motion', level: 4 },
-        { name: 'Svelte', level: 3 },
-        { name: 'WebGL / Three.js', level: 2 },
+        { name: 'Framer Motion', level: 5 },
+        { name: 'GSAP', level: 4 },
+        { name: 'WebGL / Three.js', level: 4 },
+        { name: 'Figma', level: 3 },
       ],
     },
     {
-      name: 'Tooling & Infra',
+      name: 'Cloud, AI & Infrastructure',
       items: [
-        { name: 'Git', level: 5 },
-        { name: 'Vite / Bun', level: 5 },
+        { name: 'Azure', level: 5 },
+        { name: 'AWS', level: 4 },
+        { name: 'Kubernetes', level: 4 },
         { name: 'Docker', level: 4 },
-        { name: 'GitHub Actions', level: 4 },
-        { name: 'Vercel / Cloudflare', level: 4 },
-        { name: 'PostgreSQL', level: 3 },
+        { name: 'Terraform', level: 4 },
+        { name: 'LangChain', level: 4 },
+        { name: 'PyTorch', level: 4 },
       ],
     },
   ],
@@ -149,28 +162,48 @@ export const userConfig = {
   // ── Experience ─────────────────────────────────────────────────────────
   experience: [
     {
-      company: 'Meridian Labs',
-      role: 'Senior Frontend Engineer',
-      start: '2022-06',
+      company: 'Accenture Japan',
+      role: 'Business Architecture Analyst',
+      start: '2025-12',
       end: 'present',
-      location: 'San Francisco, CA (Remote)',
+      location: 'Tokyo, Japan',
       bullets: [
-        'Led migration of a 4-year-old Create React App codebase to Vite + React 18, cutting build times from 4 min to 18 s and CI costs by 40 %.',
-        'Designed and shipped a component library (60+ components, full a11y coverage) used across 3 product teams.',
-        'Mentored two junior engineers from onboarding to shipping independently within 3 months each.',
-        'Introduced Vitest and drove unit test coverage from 12 % to 74 % on the core modules.',
+        'Delivering ERP and AI application architecture from discovery to implementation.',
+        'Driving cloud-native design decisions across enterprise workflows and integrations.',
+        'Combining business architecture with deep technical implementation across full-stack systems.',
       ],
     },
     {
-      company: 'Sprout Systems',
-      role: 'Software Developer',
-      start: '2019-09',
-      end: '2022-05',
-      location: 'Austin, TX',
+      company: 'IIT Bhilai Innovation & Technology Foundation (IBITF)',
+      role: 'Project Engineer — Project Seamless',
+      start: '2025-06',
+      end: '2025-10',
+      location: 'Bhilai, India',
       bullets: [
-        'Built a real-time collaboration layer for a SaaS form builder using Yjs + WebSockets, supporting up to 50 concurrent editors per document.',
-        'Rewrote the public REST API client from plain fetch to a typed SDK, reducing bug reports related to API usage by 60 %.',
-        'Delivered customer-facing dashboard features end-to-end: design handoff → backend endpoint → React UI → analytics.',
+        'Built smart-campus systems covering access control, biometrics, attendance, and analytics.',
+        'Shipped AWS-backed services and operational React tooling for daily campus operations.',
+      ],
+    },
+    {
+      company: 'Recogx Init',
+      role: 'Co-founder',
+      start: '2023',
+      end: '2025',
+      location: 'India',
+      bullets: [
+        'Built accessibility and automation products including Divyang ATM and campus systems.',
+        'Received Rising Star recognition for impact across energy, accessibility, and student development initiatives.',
+      ],
+    },
+    {
+      company: 'Enview Technologies',
+      role: 'Software Engineering Intern',
+      start: '2024-05',
+      end: '2024-07',
+      location: 'India',
+      bullets: [
+        'Worked across backend services, performance tuning, and computer vision pipelines.',
+        'Shipped production features for industry-facing clients with Python and Rust workflows.',
       ],
     },
   ],
@@ -178,11 +211,25 @@ export const userConfig = {
   // ── Education ──────────────────────────────────────────────────────────
   education: [
     {
-      institution: 'University of Texas at Austin',
-      degree: 'B.S. Computer Science',
-      start: '2015',
+      institution: 'Indian Institute of Technology, Bhilai',
+      degree: 'B.Tech — Computer Science & Engineering',
+      start: '2021-11',
+      end: '2025-06',
+      details: 'CGPA: 9.28. Director\'s Gold Medallist.',
+    },
+    {
+      institution: 'SAI International School',
+      degree: '12th Class — Science (CBSE)',
+      start: '2019-04',
+      end: '2021-03',
+      details: 'Score: 98.2%.',
+    },
+    {
+      institution: 'Kendriya Vidyalaya',
+      degree: '10th Class (CBSE)',
+      start: '2018',
       end: '2019',
-      details: 'Focus on Human-Computer Interaction and Distributed Systems. Dean\'s List, 2017–2019.',
+      details: 'Score: 99%.',
     },
   ],
 
@@ -190,34 +237,34 @@ export const userConfig = {
   social: [
     {
       name: 'GitHub',
-      handle: '@samreyes',
-      url: 'https://github.com/samreyes',
+      handle: '@srs-sudeep',
+      url: 'https://github.com/srs-sudeep',
       icon: 'github',
     },
     {
       name: 'LinkedIn',
-      handle: 'sam-reyes-dev',
-      url: 'https://linkedin.com/in/sam-reyes-dev',
+      handle: 'sudeep-ranjan-sahoo-b82355232',
+      url: 'https://www.linkedin.com/in/sudeep-ranjan-sahoo-b82355232/',
       icon: 'linkedin',
     },
     {
       name: 'Twitter / X',
-      handle: '@samreyes_dev',
-      url: 'https://twitter.com/samreyes_dev',
+      handle: '@SUDEEPRANJANSA1',
+      url: 'https://x.com/SUDEEPRANJANSA1',
       icon: 'twitter',
     },
     {
-      name: 'Blog',
-      handle: 'samreyes.dev/blog',
-      url: 'https://samreyes.dev/blog',
+      name: 'Medium',
+      handle: '@srsdevka',
+      url: 'https://medium.com/@srsdevka',
       icon: 'rss',
     },
   ],
 
   // ── Contact ────────────────────────────────────────────────────────────
   contact: {
-    email: 'hello@samreyes.dev',
-    calendarUrl: 'https://cal.com/samreyes/30min',
+    email: 'sudeep160403@gmail.com',
+    calendarUrl: 'https://www.iamsrs.com/contact',
     preferredContact: 'email',
   },
 
@@ -228,12 +275,12 @@ export const userConfig = {
   // ── Fortunes ───────────────────────────────────────────────────────────
   // Shown by the `fortune` command. Add as many as you like.
   fortunes: [
-    'First, solve the problem. Then, write the code. — John Johnson',
-    'Any fool can write code that a computer can understand. Good programmers write code that humans can understand. — Martin Fowler',
-    'Programs must be written for people to read, and only incidentally for machines to execute. — Harold Abelson',
-    'The most disastrous thing you can ever learn is your first programming language. — Alan Kay',
-    'Simplicity is a great virtue, but it requires hard work to achieve it and education to appreciate it. — Edsger Dijkstra',
-    'The best way to predict the future is to invent it. — Alan Kay',
-    'Make it work, make it right, make it fast. In that order. — Kent Beck',
+    'Build it once, scale it forever.',
+    'Architecture is strategy made executable.',
+    'Cloud is not a destination. It is an operating model.',
+    'AI delivers value only when it ships to real users.',
+    'Ship with intent. Iterate with data.',
+    'Elegance in systems is measured in resilience.',
+    'From concept to deployment: close the loop.',
   ],
 } satisfies UserConfig;

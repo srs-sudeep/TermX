@@ -37,7 +37,8 @@ export default {
 
     return { type: 'text', content: lines.join('\n'), tone: 'muted' };
   },
-  autocomplete: (partial) => {
+  autocomplete: (partial, _ctx) => {
+    void _ctx;
     const registry = createRegistry();
     return registry.complete(partial);
   },
