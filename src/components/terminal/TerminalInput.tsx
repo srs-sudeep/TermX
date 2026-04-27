@@ -1,4 +1,4 @@
-import { useRef, useCallback, type KeyboardEvent } from 'react';
+import { useRef, useCallback, useEffect, type KeyboardEvent } from 'react';
 import type { UserConfig } from '@/types';
 import type { Registry } from '@/lib/commandRegistry';
 import { Prompt } from './Prompt';
@@ -50,6 +50,13 @@ export function TerminalInput({
   registry = null,
 }: TerminalInputProps) {
   const inputRef = useRef<HTMLInputElement>(null);
+
+  // Re-focus the input whenever processing completes (disabled flips false).
+  useEffect(() => {
+    if (!disabled) {
+      inputRef.current?.focus();
+    }
+  }, [disabled]);
 
   const { onKeyDown: historyKeyDown, resetCursor } = useCommandHistory(value, onChange);
   const { onKeyDown: autocompleteKeyDown } = useAutocomplete(registry, value, onChange);

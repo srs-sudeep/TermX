@@ -44,7 +44,7 @@ export function WelcomeScreen({ config = userConfig }: WelcomeScreenProps) {
       data-welcome-screen
     >
       <pre
-        className="text-[var(--accent)] whitespace-pre overflow-x-auto select-none"
+        className="text-[var(--accent)] whitespace-pre overflow-x-auto max-w-full select-none"
         aria-label={`${config.user.name} — terminal portfolio`}
       >
         {composite}
