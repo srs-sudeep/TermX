@@ -27,26 +27,26 @@
 
 ### Welcome & Help
 
-| Welcome screen | Help |
-|---|---|
+| Welcome screen              | Help                     |
+| --------------------------- | ------------------------ |
 | ![welcome](public/hero.png) | ![help](public/help.png) |
 
 ### Portfolio Commands
 
-| `whoami` | `projects` |
-|---|---|
+| `whoami`                     | `projects`                       |
+| ---------------------------- | -------------------------------- |
 | ![whoami](public/whomai.png) | ![projects](public/projects.png) |
 
-| `experience` | `education` |
-|---|---|
+| `experience`                         | `education`                        |
+| ------------------------------------ | ---------------------------------- |
 | ![experience](public/experience.png) | ![education](public/education.png) |
 
-| `contact` | `neofetch` |
-|---|---|
+| `contact`                      | `neofetch`                       |
+| ------------------------------ | -------------------------------- |
 | ![contact](public/contact.png) | ![neofetch](public/neofetch.png) |
 
-| `sudo` / `fortune` | Settings panel |
-|---|---|
+| `sudo` / `fortune`                       | Settings panel                   |
+| ---------------------------------------- | -------------------------------- |
 | ![sudo fortune](public/sudo-fortune.png) | ![settings](public/settings.png) |
 
 ---
@@ -55,18 +55,18 @@
 
 Switch with `theme set <name>` or open the settings panel.
 
-| | | |
-|---|---|---|
-| ![termfolio](public/themes/termfolio.png) | ![dracula](public/themes/dracula.png) | ![tokyo-night](public/themes/tokyo-night.png) |
-| **termfolio** (default) | **dracula** | **tokyo-night** |
-| ![nord](public/themes/nord.png) | ![one-dark](public/themes/one-dark.png) | ![monokai](public/themes/monokai.png) |
-| **nord** | **one-dark** | **monokai** |
-| ![gruvbox-dark](public/themes/gruvbox-dark.png) | ![gruvbox-light](public/themes/gruvbox-light.png) | ![solarized-dark](public/themes/solarized-dark.png) |
-| **gruvbox-dark** | **gruvbox-light** | **solarized-dark** |
-| ![solarized-light](public/themes/solarized-light.png) | ![hacker](public/themes/hacker.png) | ![matrix](public/themes/matrix.png) |
-| **solarized-light** | **hacker** | **matrix** |
-| ![retro](public/themes/retro.png) | ![light](public/themes/light.png) | |
-| **retro** | **light** | |
+|                                                       |                                                   |                                                     |
+| ----------------------------------------------------- | ------------------------------------------------- | --------------------------------------------------- |
+| ![termfolio](public/themes/termfolio.png)             | ![dracula](public/themes/dracula.png)             | ![tokyo-night](public/themes/tokyo-night.png)       |
+| **termfolio** (default)                               | **dracula**                                       | **tokyo-night**                                     |
+| ![nord](public/themes/nord.png)                       | ![one-dark](public/themes/one-dark.png)           | ![monokai](public/themes/monokai.png)               |
+| **nord**                                              | **one-dark**                                      | **monokai**                                         |
+| ![gruvbox-dark](public/themes/gruvbox-dark.png)       | ![gruvbox-light](public/themes/gruvbox-light.png) | ![solarized-dark](public/themes/solarized-dark.png) |
+| **gruvbox-dark**                                      | **gruvbox-light**                                 | **solarized-dark**                                  |
+| ![solarized-light](public/themes/solarized-light.png) | ![hacker](public/themes/hacker.png)               | ![matrix](public/themes/matrix.png)                 |
+| **solarized-light**                                   | **hacker**                                        | **matrix**                                          |
+| ![retro](public/themes/retro.png)                     | ![light](public/themes/light.png)                 |                                                     |
+| **retro**                                             | **light**                                         |                                                     |
 
 ---
 
@@ -139,12 +139,12 @@ Open [http://localhost:5173](http://localhost:5173).
 
 Everything user-editable lives in `src/config/`.
 
-| File | What lives here |
-|---|---|
-| `user.config.ts` | Name, bio, projects, skills, experience, education, social links, contact, fortunes |
-| `themes.config.ts` | Colour themes — add your own or remove ones you don't need |
-| `commands.config.ts` | Custom commands or overrides for built-in commands |
-| `settings.config.ts` | Boot sequence on/off, default theme, typewriter effect, prompt template |
+| File                 | What lives here                                                                     |
+| -------------------- | ----------------------------------------------------------------------------------- |
+| `user.config.ts`     | Name, bio, projects, skills, experience, education, social links, contact, fortunes |
+| `themes.config.ts`   | Colour themes — add your own or remove ones you don't need                          |
+| `commands.config.ts` | Custom commands or overrides for built-in commands                                  |
+| `settings.config.ts` | Boot sequence on/off, default theme, typewriter effect, prompt template             |
 
 ### Add a command
 
@@ -197,26 +197,26 @@ TermX is a static SPA — deploy anywhere.
 bun run build   # output: dist/
 ```
 
-| Platform | Instructions |
-|---|---|
-| **Vercel** | `vercel --prod` — `vercel.json` included, zero config |
-| **Netlify** | Connect your repo — `netlify.toml` included |
-| **GitHub Pages** | Push to `main` — Actions workflow builds and publishes |
+| Platform             | Instructions                                           |
+| -------------------- | ------------------------------------------------------ |
+| **Vercel**           | `vercel --prod` — `vercel.json` included, zero config  |
+| **Netlify**          | Connect your repo — `netlify.toml` included            |
+| **GitHub Pages**     | Push to `main` — Actions workflow builds and publishes |
 | **Cloudflare Pages** | Build command `bun run build`, output directory `dist` |
 
 ---
 
 ## Stack
 
-| | |
-|---|---|
-| Runtime / pkg manager | Bun |
-| Bundler | Vite 5 |
-| UI | React 18 + TypeScript 5 strict |
-| Styling | TailwindCSS 3 + CSS variables |
-| State | Zustand 4 |
-| Animation | Framer Motion 11 |
-| Testing | Vitest 2 + Testing Library |
+|                       |                                |
+| --------------------- | ------------------------------ |
+| Runtime / pkg manager | Bun                            |
+| Bundler               | Vite 5                         |
+| UI                    | React 18 + TypeScript 5 strict |
+| Styling               | TailwindCSS 3 + CSS variables  |
+| State                 | Zustand 4                      |
+| Animation             | Framer Motion 11               |
+| Testing               | Vitest 2 + Testing Library     |
 
 ---
 
@@ -255,4 +255,3 @@ src/
 ## License
 
 MIT — fork freely, that's the point.
-
