@@ -1,11 +1,11 @@
-import { useState, useCallback, useRef, useEffect, type MouseEvent } from 'react';
-import { TerminalInput } from './TerminalInput';
-import { TerminalHistory } from './TerminalHistory';
 import { userConfig } from '@/config';
-import { useScrollToBottom } from '@/hooks/useScrollToBottom';
 import { useKeyboardShortcuts } from '@/hooks/useKeyboardShortcuts';
-import { useTerminalStore } from '@/store/terminalStore';
+import { useScrollToBottom } from '@/hooks/useScrollToBottom';
 import { useTerminal } from '@/hooks/useTerminal';
+import { useTerminalStore } from '@/store/terminalStore';
+import { useCallback, useEffect, useRef, useState, type MouseEvent } from 'react';
+import { TerminalHistory } from './TerminalHistory';
+import { TerminalInput } from './TerminalInput';
 
 interface TerminalProps {
   /**

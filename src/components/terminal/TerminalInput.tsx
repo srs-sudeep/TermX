@@ -1,10 +1,10 @@
-import { useRef, useCallback, useEffect, type KeyboardEvent } from 'react';
-import type { UserConfig } from '@/types';
-import type { Registry } from '@/lib/commandRegistry';
-import { Prompt } from './Prompt';
-import { cn } from '@/lib/cn';
-import { useCommandHistory } from '@/hooks/useCommandHistory';
 import { useAutocomplete } from '@/hooks/useAutocomplete';
+import { useCommandHistory } from '@/hooks/useCommandHistory';
+import { cn } from '@/lib/cn';
+import type { Registry } from '@/lib/commandRegistry';
+import type { UserConfig } from '@/types';
+import { useCallback, useEffect, useRef, type KeyboardEvent } from 'react';
+import { Prompt } from './Prompt';
 
 interface TerminalInputProps {
   promptConfig: UserConfig['prompt'];

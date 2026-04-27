@@ -1,6 +1,6 @@
-import { motion, useReducedMotion } from 'framer-motion';
 import { userConfig } from '@/config';
 import { buildBlockBanner, PORTRAIT_ART } from '@/lib/asciiArt';
+import { motion, useReducedMotion } from 'framer-motion';
 
 const VERSION = '2.0.0';
 
@@ -61,7 +61,9 @@ export function WelcomeScreen({ config = userConfig }: WelcomeScreenProps) {
           <span className="text-[var(--muted)]">(Version {VERSION})</span>
         </p>
 
-        <p className="text-[var(--muted)] select-none" aria-hidden="true">────</p>
+        <p className="text-[var(--muted)] select-none" aria-hidden="true">
+          ────
+        </p>
 
         <p className="text-[var(--fg)]">
           This project's source code can be found in this project's{' '}
@@ -76,7 +78,9 @@ export function WelcomeScreen({ config = userConfig }: WelcomeScreenProps) {
           .
         </p>
 
-        <p className="text-[var(--muted)] select-none" aria-hidden="true">────</p>
+        <p className="text-[var(--muted)] select-none" aria-hidden="true">
+          ────
+        </p>
 
         <p className="text-[var(--fg)]">
           For a list of available commands, type{' '}
