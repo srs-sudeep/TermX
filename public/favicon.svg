@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none">
+  <!-- Background -->
+  <rect width="32" height="32" rx="6" fill="#1f2430"/>
+  <!-- Prompt arrow -->
+  <text x="3" y="21" font-family="monospace" font-size="14" font-weight="bold" fill="#5ccfe6">❯</text>
+  <!-- Blinking cursor block -->
+  <rect x="16" y="10" width="9" height="13" rx="1" fill="#5ccfe6" opacity="0.85"/>
+</svg>
