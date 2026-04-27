@@ -39,9 +39,7 @@ export function WelcomeScreen({ config = userConfig }: WelcomeScreenProps) {
         transition={{ duration: 0.45, ease: 'easeOut', delay: 0.15 }}
         className="mt-4 space-y-2"
       >
-        <p className="text-[var(--fg)]">
-          Welcome to my terminal portfolio.
-        </p>
+        <p className="text-[var(--fg)]">Welcome to my terminal portfolio.</p>
 
         <p className="text-[var(--muted)] select-none" aria-hidden="true">
           ────
@@ -72,4 +70,3 @@ export function WelcomeScreen({ config = userConfig }: WelcomeScreenProps) {
     </motion.div>
   );
 }
-
