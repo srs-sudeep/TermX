@@ -1,80 +1,125 @@
-# termfolio
+# TermX
 
-> A terminal-emulator portfolio site that's fully data-driven. Fork it, edit one config file, deploy.
+> A terminal-emulator portfolio — fully data-driven, forkable in 10 minutes.
 
-```
-sam@portfolio:~$ help
+**Live demo → [termx.vercel.app](https://termx.vercel.app)**
 
-  core
-    help      Show available commands
-    clear     Clear the terminal  (alias: cls)
-    echo      Print text
-    whoami    Who am I
-    date      Current date and time
-    history   Show command history
-    man       Manual page for a command
-    pwd       Current directory
-    ls        List directory contents
-    cd        Change directory
+![TermX hero](public/hero.png)
 
-  portfolio
-    about     Who I am  (alias: bio)
-    projects  Browse my projects  (alias: work)
-    skills    My skills
-    experience  Work experience
-    education   Education history
-    contact   Get in touch
-    social    Social profiles
-    resume    Download my résumé  (alias: cv)
+---
 
-  system
-    theme     Manage terminal themes
-    font      Change font family or size
-    settings  Open the settings panel
-    reset     Reset all preferences
-
-  fun
-    neofetch  System info, terminal-style
-    banner    Large ASCII name
-    cowsay    Classic cowsay
-    fortune   Random programming wisdom
-    coffee    418 I'm a teapot
-    sudo      Permission denied: nice try.
-    matrix    Enter the Matrix  (Esc to exit)
-    hack      Elite hacking simulation
-```
-
-## Features
+## Highlights
 
 - **Pure terminal interface** — keyboard-first, no traditional UI to design.
-- **Forkable in 10 minutes** — edit `src/config/user.config.ts` and you're done.
-- **13 themes** out of the box (Dracula, Nord, Tokyo Night, Solarized, Matrix, Retro CRT, …) — switch live with `theme set <name>`.
-- **Custom commands** — add your own without touching the engine (`src/config/commands.config.ts`).
-- **Real terminal feel** — `↑`/`↓` history recall, `Tab` autocomplete, `Ctrl+L`, `Ctrl+C`, `Ctrl+U`, blinking cursor, configurable prompt template.
-- **Boot sequence + ASCII banner** on first visit (skippable, respects `prefers-reduced-motion`).
-- **Persistent preferences** — theme, font, command history saved to `localStorage`. No account needed.
+- **Fork-ready** — edit `src/config/user.config.ts` and you're done.
+- **14 themes** — Dracula, Nord, Tokyo Night, Solarized Dark/Light, Matrix, Retro CRT, Gruvbox, Monokai, One Dark, Hacker, Light, and more. Switch live with `theme set <name>`.
+- **Real terminal feel** — `↑`/`↓` history recall, `Tab` autocomplete, `Ctrl+L` / `Ctrl+C` / `Ctrl+U`, blinking cursor, configurable prompt template.
+- **oh-my-zsh–style prompt** — colored `user@host:path ❯` segments.
+- **Boot sequence + ASCII name banner** on first visit (skippable, respects `prefers-reduced-motion`).
+- **Persistent preferences** — theme, font, history saved to `localStorage`. No account needed.
 - **Mobile responsive** — `100dvh` height, soft-keyboard handled, tap targets ≥ 44 px.
-- **Accessible** — `prefers-reduced-motion` respected, screen-reader compatible, AAA contrast on all non-experimental themes.
+- **Accessible** — `prefers-reduced-motion` respected, screen-reader compatible.
 - **Frontend only** — no backend, no tracking, no data leaves the browser.
 
-## Stack
+---
 
-| | |
+## Screenshots
+
+### Welcome & Help
+
+| Welcome screen | Help |
 |---|---|
-| Runtime / pkg manager | Bun |
-| Bundler | Vite 5 |
-| UI | React 18 + TypeScript 5 strict |
-| Styling | TailwindCSS 3 + CSS variables |
-| State | Zustand 4 |
-| Animation | Framer Motion 11 |
-| Testing | Vitest 2 + Testing Library |
+| ![welcome](public/hero.png) | ![help](public/help.png) |
+
+### Portfolio Commands
+
+| `whoami` | `projects` |
+|---|---|
+| ![whoami](public/whomai.png) | ![projects](public/projects.png) |
+
+| `experience` | `education` |
+|---|---|
+| ![experience](public/experience.png) | ![education](public/education.png) |
+
+| `contact` | `neofetch` |
+|---|---|
+| ![contact](public/contact.png) | ![neofetch](public/neofetch.png) |
+
+| `sudo` / `fortune` | Settings panel |
+|---|---|
+| ![sudo fortune](public/sudo-fortune.png) | ![settings](public/settings.png) |
+
+---
+
+## Themes
+
+Switch with `theme set <name>` or open the settings panel.
+
+| | | |
+|---|---|---|
+| ![termfolio](public/themes/termfolio.png) | ![dracula](public/themes/dracula.png) | ![tokyo-night](public/themes/tokyo-night.png) |
+| **termfolio** (default) | **dracula** | **tokyo-night** |
+| ![nord](public/themes/nord.png) | ![one-dark](public/themes/one-dark.png) | ![monokai](public/themes/monokai.png) |
+| **nord** | **one-dark** | **monokai** |
+| ![gruvbox-dark](public/themes/gruvbox-dark.png) | ![gruvbox-light](public/themes/gruvbox-light.png) | ![solarized-dark](public/themes/solarized-dark.png) |
+| **gruvbox-dark** | **gruvbox-light** | **solarized-dark** |
+| ![solarized-light](public/themes/solarized-light.png) | ![hacker](public/themes/hacker.png) | ![matrix](public/themes/matrix.png) |
+| **solarized-light** | **hacker** | **matrix** |
+| ![retro](public/themes/retro.png) | ![light](public/themes/light.png) | |
+| **retro** | **light** | |
+
+---
+
+## Commands
+
+```
+core
+  help        Show available commands
+  clear       Clear the terminal  (alias: cls)
+  echo        Print text
+  whoami      Who am I
+  date        Current date and time
+  history     Show command history
+  man         Manual page for a command
+  pwd         Current directory
+  ls          List directory contents
+  cd          Change directory
+
+portfolio
+  about       Who I am  (alias: bio)
+  projects    Browse my projects  (alias: work)
+  skills      My skills
+  experience  Work experience
+  education   Education history
+  contact     Get in touch
+  social      Social profiles
+  resume      Download my résumé  (alias: cv)
+
+system
+  theme       Manage terminal themes
+  font        Change font family or size
+  settings    Open the settings panel
+  reset       Reset all preferences
+
+fun
+  neofetch    System info, terminal-style
+  banner      Large ASCII name
+  cowsay      Classic cowsay
+  fortune     Random programming wisdom
+  coffee      418 I'm a teapot
+  sudo        Permission denied: nice try.
+  matrix      Enter the Matrix  (Esc to exit)
+  hack        Elite hacking simulation
+```
+
+---
 
 ## Quick start
 
 ```bash
 # 1. Fork this repo on GitHub, then clone your fork
-git clone https://github.com/YOUR_HANDLE/termfolio.git
-cd termfolio
+git clone https://github.com/YOUR_HANDLE/TermX.git
+cd TermX
 
 # 2. Install dependencies
 bun install
@@ -86,11 +131,13 @@ $EDITOR src/config/user.config.ts
 bun run dev
 ```
 
-Open [http://localhost:5173](http://localhost:5173). The demo runs with "Sam Reyes" data until you replace it.
+Open [http://localhost:5173](http://localhost:5173).
+
+---
 
 ## Customize
 
-Everything user-editable lives in `src/config/`. The engine never needs to change.
+Everything user-editable lives in `src/config/`.
 
 | File | What lives here |
 |---|---|
@@ -99,9 +146,7 @@ Everything user-editable lives in `src/config/`. The engine never needs to chang
 | `commands.config.ts` | Custom commands or overrides for built-in commands |
 | `settings.config.ts` | Boot sequence on/off, default theme, typewriter effect, prompt template |
 
-See [docs/CUSTOMIZATION.md](./docs/CUSTOMIZATION.md) for a field-by-field walkthrough.
-
-## Add a command
+### Add a command
 
 ```ts
 // src/config/commands.config.ts
@@ -121,9 +166,7 @@ export const customCommands: Command[] = [
 ];
 ```
 
-The command is auto-registered — no other file to edit. Full guide: [docs/ADDING_COMMANDS.md](./docs/ADDING_COMMANDS.md)
-
-## Add a theme
+### Add a theme
 
 ```ts
 // src/config/themes.config.ts — append to the themes array
@@ -142,11 +185,13 @@ The command is auto-registered — no other file to edit. Full guide: [docs/ADDI
 },
 ```
 
-Then run `theme set catppuccin`. Full guide: [docs/ADDING_THEMES.md](./docs/ADDING_THEMES.md)
+Then run `theme set catppuccin`.
+
+---
 
 ## Deploy
 
-termfolio is a static SPA — it deploys anywhere that can serve HTML, CSS, and JS.
+TermX is a static SPA — deploy anywhere.
 
 ```bash
 bun run build   # output: dist/
@@ -154,14 +199,28 @@ bun run build   # output: dist/
 
 | Platform | Instructions |
 |---|---|
-| **Vercel** | `vercel --prod` — `vercel.json` is included, zero extra config |
-| **Netlify** | Connect your repo in the Netlify dashboard — `netlify.toml` is included |
-| **GitHub Pages** | Push to `main` — the included Actions workflow builds and publishes automatically |
-| **Cloudflare Pages** | Connect repo, build command `bun run build`, output directory `dist` |
+| **Vercel** | `vercel --prod` — `vercel.json` included, zero config |
+| **Netlify** | Connect your repo — `netlify.toml` included |
+| **GitHub Pages** | Push to `main` — Actions workflow builds and publishes |
+| **Cloudflare Pages** | Build command `bun run build`, output directory `dist` |
 
-Full guide with custom domain and env var setup: [docs/DEPLOYMENT.md](./docs/DEPLOYMENT.md)
+---
 
-## Development scripts
+## Stack
+
+| | |
+|---|---|
+| Runtime / pkg manager | Bun |
+| Bundler | Vite 5 |
+| UI | React 18 + TypeScript 5 strict |
+| Styling | TailwindCSS 3 + CSS variables |
+| State | Zustand 4 |
+| Animation | Framer Motion 11 |
+| Testing | Vitest 2 + Testing Library |
+
+---
+
+## Dev scripts
 
 ```bash
 bun run dev           # start Vite dev server (HMR)
@@ -174,6 +233,8 @@ bun run test          # Vitest (single run)
 bun run test:watch    # Vitest watch mode
 bun run test:coverage # coverage report
 ```
+
+---
 
 ## Project layout
 
@@ -189,6 +250,9 @@ src/
 └── styles/      ← global CSS + theme variable definitions
 ```
 
+---
+
 ## License
 
-MIT. Fork freely — that's the point.
+MIT — fork freely, that's the point.
+
