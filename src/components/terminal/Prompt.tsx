@@ -2,82 +2,44 @@ import type { UserConfig } from '@/types';
 
 interface PromptProps {
   config: UserConfig['prompt'];
-  /**
-   * When true, renders in muted color — used for completed history entries
-   * so the current input line stands out.
-   */
   muted?: boolean;
 }
 
 /**
- * Renders the terminal prompt string.
- * Substitutes {user}, {host}, {path} tokens from the prompt config.
+ * oh-my-zsh–inspired prompt.
  *
- * @example
- * <Prompt config={userConfig.prompt} />
- * // → sam@portfolio:~$ (in prompt color)
- *
- * <Prompt config={userConfig.prompt} muted />
- * // → sam@portfolio:~$ (in muted color, for history entries)
+ * Active:  user@host  ~/path  ❯
+ * Muted:   user@host:path$   (history entries — subdued single color)
  */
 export function Prompt({ config, muted = false }: PromptProps) {
-  // Render structured segments so we can color the user, host, and path
-  // independently. This produces the classic three-tone prompt look:
-  //
-  //     user@host:path$
-  //     ^^^^      ^^^^      → prompt-colored
-  //         ^^^^^             → fg-colored
-  //              ^^^^^         → accent-colored
-  //
-  // Falls back to a plain rendered template when `muted` is set so history
-  // entries stay subdued.
   if (muted) {
-    const rendered = config.template
-      .replace('{user}', config.user)
-      .replace('{host}', config.host)
-      .replace('{path}', config.path);
     return (
-      <span className="text-[var(--muted)] mr-1.5" aria-hidden="true">
-        {rendered}
+      <span className="text-[var(--muted)] mr-2 shrink-0 select-none" aria-hidden="true">
+        <span className="opacity-70">{config.user}</span>
+        <span className="opacity-40">@</span>
+        <span className="opacity-70">{config.host}</span>
+        <span className="opacity-40">:</span>
+        <span className="opacity-70">{config.path}</span>
+        <span className="opacity-40 ml-1">❯</span>
       </span>
     );
   }
 
-  // Active prompt — split the template so each token gets its own color.
-  // Static text between tokens is rendered in the prompt color.
-  const tokenRe = /(\{user\}|\{host\}|\{path\})/g;
-  const parts = config.template.split(tokenRe);
-
   return (
-    <span className="mr-1.5" aria-hidden="true">
-      {parts.map((part, idx) => {
-        if (part === '{user}') {
-          return (
-            <span key={idx} className="text-[var(--prompt)] font-semibold">
-              {config.user}
-            </span>
-          );
-        }
-        if (part === '{host}') {
-          return (
-            <span key={idx} className="text-[var(--accent)] font-semibold">
-              {config.host}
-            </span>
-          );
-        }
-        if (part === '{path}') {
-          return (
-            <span key={idx} className="text-[var(--info)]">
-              {config.path}
-            </span>
-          );
-        }
-        return (
-          <span key={idx} className="text-[var(--muted)]">
-            {part}
-          </span>
-        );
-      })}
+    <span className="mr-2 shrink-0 select-none inline-flex items-center gap-0" aria-hidden="true">
+      {/* user@host segment */}
+      <span className="text-[var(--prompt)] font-semibold">{config.user}</span>
+      <span className="text-[var(--muted)]">@</span>
+      <span className="text-[var(--accent)] font-semibold">{config.host}</span>
+
+      {/* separator */}
+      <span className="text-[var(--muted)] mx-1.5">:</span>
+
+      {/* path segment */}
+      <span className="text-[var(--info)]">{config.path}</span>
+
+      {/* arrow — the oh-my-zsh chevron */}
+      <span className="text-[var(--prompt)] font-bold ml-1.5">❯</span>
     </span>
   );
 }

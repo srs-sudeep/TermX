@@ -96,7 +96,7 @@ export function Terminal({ bootRan = false }: TerminalProps) {
     <div
       ref={containerRef}
       className="
-        flex-1 overflow-y-auto overflow-x-hidden cursor-text
+        flex-1 overflow-y-auto cursor-text
         scroll-smooth
         bg-[var(--bg)]
       "
