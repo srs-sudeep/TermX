@@ -59,7 +59,11 @@ export function TerminalInput({
   }, [disabled]);
 
   const { onKeyDown: historyKeyDown, resetCursor } = useCommandHistory(value, onChange);
-  const { onKeyDown: autocompleteKeyDown } = useAutocomplete(registry, value, onChange);
+  const {
+    ghostSuffix,
+    onKeyDown: autocompleteKeyDown,
+    reset: resetAutocomplete,
+  } = useAutocomplete(registry, value, onChange);
 
   /** Expose focus to the parent via the container's click handler. */
   const focus = useCallback(() => {
@@ -80,10 +84,22 @@ export function TerminalInput({
         return;
       }
 
+      // ── Accept ghost text (right arrow at end of line) ───────────────
+      if (e.key === 'ArrowRight' && ghostSuffix) {
+        const input = inputRef.current;
+        if (input && input.selectionStart === value.length) {
+          e.preventDefault();
+          onChange(value + ghostSuffix);
+          resetAutocomplete();
+          return;
+        }
+      }
+
       // ── Submit (Enter) ────────────────────────────────────────────────
       if (e.key === 'Enter') {
         e.preventDefault();
         resetCursor();
+        resetAutocomplete();
         onSubmit(value);
         onChange('');
         return;
@@ -93,17 +109,28 @@ export function TerminalInput({
       if (e.ctrlKey && (e.key === 'c' || e.key === 'C')) {
         e.preventDefault();
         resetCursor();
+        resetAutocomplete();
         onChange('');
         return;
       }
       if (e.ctrlKey && (e.key === 'u' || e.key === 'U')) {
         e.preventDefault();
         resetCursor();
+        resetAutocomplete();
         onChange('');
         return;
       }
     },
-    [value, onSubmit, onChange, historyKeyDown, autocompleteKeyDown, resetCursor],
+    [
+      value,
+      onSubmit,
+      onChange,
+      historyKeyDown,
+      autocompleteKeyDown,
+      resetCursor,
+      ghostSuffix,
+      resetAutocomplete,
+    ],
   );
 
   return (
@@ -132,28 +159,47 @@ export function TerminalInput({
 
       <Prompt config={promptConfig} />
 
-      <input
-        ref={inputRef}
-        type="text"
-        value={value}
-        onChange={(e) => onChange(e.target.value)}
-        onKeyDown={handleKeyDown}
-        disabled={disabled}
-        autoFocus
-        autoComplete="off"
-        autoCorrect="off"
-        autoCapitalize="off"
-        spellCheck={false}
-        aria-label="Terminal command input"
-        placeholder={disabled ? 'processing…' : "type a command — try 'help'"}
-        className={cn(
-          'flex-1 min-w-0 bg-transparent border-0 outline-none',
-          'font-mono text-[length:var(--font-size-base)] leading-[var(--line-height-base)]',
-          'text-[var(--fg)] caret-[var(--cursor)]',
-          'placeholder:text-[var(--muted)]/60',
-          disabled && 'opacity-50 cursor-not-allowed',
+      {/* Input + ghost text wrapper */}
+      <div className="relative flex-1 min-w-0 flex items-center">
+        {/* Ghost text layer — shown behind the real input */}
+        {ghostSuffix && (
+          <div
+            aria-hidden="true"
+            className={cn(
+              'absolute inset-0 pointer-events-none flex items-center',
+              'font-mono text-[length:var(--font-size-base)] leading-[var(--line-height-base)]',
+              'whitespace-pre overflow-hidden',
+            )}
+          >
+            {/* Invisible spacer to push ghost to cursor position */}
+            <span className="invisible">{value}</span>
+            <span className="text-[var(--muted)]/50">{ghostSuffix}</span>
+          </div>
         )}
-      />
+
+        <input
+          ref={inputRef}
+          type="text"
+          value={value}
+          onChange={(e) => onChange(e.target.value)}
+          onKeyDown={handleKeyDown}
+          disabled={disabled}
+          autoFocus
+          autoComplete="off"
+          autoCorrect="off"
+          autoCapitalize="off"
+          spellCheck={false}
+          aria-label="Terminal command input"
+          placeholder={disabled ? 'processing…' : "type a command — try 'help'"}
+          className={cn(
+            'relative z-10 w-full bg-transparent border-0 outline-none',
+            'font-mono text-[length:var(--font-size-base)] leading-[var(--line-height-base)]',
+            'text-[var(--fg)] caret-[var(--cursor)]',
+            'placeholder:text-[var(--muted)]/60',
+            disabled && 'opacity-50 cursor-not-allowed',
+          )}
+        />
+      </div>
     </div>
   );
 }
