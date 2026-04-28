@@ -1,10 +1,7 @@
- 
-
 import type { Settings } from '@/types';
 
 export const settings = {
-   
-  defaultTheme: 'termfolio',
+  defaultTheme: 'tokyo-night',
 
   defaultFontSize: 'md',
 
