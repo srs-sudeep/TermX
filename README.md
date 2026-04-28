@@ -16,14 +16,16 @@ TermX was inspired by [satnaing/terminal-portfolio](https://github.com/satnaing/
 
 ## Highlights
 
-- **Looks and feels like a real terminal** — clean prompt styling, smooth typing, command history, and autocomplete make it feel familiar from the first command.
-- **Easy to make your own** — update your name, projects, experience, and links, and the portfolio is ready to share.
-- **Multiple themes built in** — switch between a range of terminal-inspired looks to match your personal style.
-- **Strong first impression** — a boot sequence and large ASCII banner give the site personality as soon as it opens.
-- **Remembers your preferences** — theme, font, and other settings stay the way you left them.
-- **Works well on desktop and mobile** — the layout stays usable and polished across screen sizes.
-- **Accessible and lightweight** — designed to feel smooth, readable, and distraction-free.
-- **Private by design** — everything runs in the browser with no account, no tracking, and no backend setup.
+- **Powerline-style prompt** — oh-my-zsh inspired colored segments (`user@host ▶ path ▶ ❯`) that adapt to the active theme.
+- **Ghost-text autocomplete** — inline suggestions with `Tab` cycling and `→` to accept, no popup lists in the buffer.
+- **Looks and feels like a real terminal** — boot sequence, command history, autocomplete, ANSI-style output, and a Matrix-rain easter egg.
+- **14 themes built in** — Tokyo Night by default; switch with `theme set <name>` or the settings panel.
+- **Easy to make your own** — update one config file (`src/config/user.config.ts`) with your name, projects, experience, and links.
+- **Strong first impression** — large ASCII banner of your name plus a portrait emblem on the welcome screen.
+- **Remembers your preferences** — theme, font, and other settings persist via `localStorage`.
+- **Works well on desktop and mobile** — responsive layout, accessible focus management, reduced-motion support.
+- **Private by design** — 100% client-side, no analytics, no backend, no account.
+- **Quality-gated** — lint, typecheck, and 180+ tests run via Husky pre-push hook.
 
 ---
 
@@ -61,8 +63,8 @@ Switch with `theme set <name>` or open the settings panel.
 
 |                                                       |                                                   |                                                     |
 | ----------------------------------------------------- | ------------------------------------------------- | --------------------------------------------------- |
-| ![termfolio](public/themes/termfolio.png)             | ![dracula](public/themes/dracula.png)             | ![tokyo-night](public/themes/tokyo-night.png)       |
-| **termfolio** (default)                               | **dracula**                                       | **tokyo-night**                                     |
+| ![tokyo-night](public/themes/tokyo-night.png)         | ![termfolio](public/themes/termfolio.png)         | ![dracula](public/themes/dracula.png)               |
+| **tokyo-night** (default)                             | **termfolio**                                     | **dracula**                                         |
 | ![nord](public/themes/nord.png)                       | ![one-dark](public/themes/one-dark.png)           | ![monokai](public/themes/monokai.png)               |
 | **nord**                                              | **one-dark**                                      | **monokai**                                         |
 | ![gruvbox-dark](public/themes/gruvbox-dark.png)       | ![gruvbox-light](public/themes/gruvbox-light.png) | ![solarized-dark](public/themes/solarized-dark.png) |
@@ -212,15 +214,30 @@ bun run build   # output: dist/
 
 ## Stack
 
-|                       |                                |
-| --------------------- | ------------------------------ |
-| Runtime / pkg manager | Bun                            |
-| Bundler               | Vite 5                         |
-| UI                    | React 18 + TypeScript 5 strict |
-| Styling               | TailwindCSS 3 + CSS variables  |
-| State                 | Zustand 4                      |
-| Animation             | Framer Motion 11               |
-| Testing               | Vitest 2 + Testing Library     |
+|                       |                                 |
+| --------------------- | ------------------------------- |
+| Runtime / pkg manager | Bun                             |
+| Bundler               | Vite 5                          |
+| UI                    | React 18 + TypeScript 5 strict  |
+| Styling               | TailwindCSS 3 + CSS variables   |
+| State                 | Zustand 4                       |
+| Animation             | Framer Motion 11                |
+| Testing               | Vitest 2 + Testing Library      |
+| Code quality          | ESLint 8 + Prettier 3 + Husky 9 |
+
+---
+
+## Keyboard shortcuts
+
+| Key        | Action                               |
+| ---------- | ------------------------------------ |
+| `Tab`      | Autocomplete / cycle through matches |
+| `→`        | Accept ghost-text suggestion         |
+| `↑` / `↓`  | Navigate command history             |
+| `Ctrl + L` | Clear screen                         |
+| `Ctrl + C` | Cancel current input                 |
+| `Ctrl + U` | Clear input line                     |
+| `Esc`      | Exit `matrix` / `hack` effects       |
 
 ---
 
@@ -232,11 +249,24 @@ bun run build         # tsc --noEmit + vite build
 bun run preview       # preview the production build locally
 bun run typecheck     # tsc --noEmit only
 bun run lint          # ESLint (zero warnings allowed)
-bun run format        # Prettier
+bun run lint:fix      # auto-fix lint issues
+bun run format        # Prettier write
+bun run format:check  # Prettier check (CI)
 bun run test          # Vitest (single run)
 bun run test:watch    # Vitest watch mode
 bun run test:coverage # coverage report
+bun run validate      # lint + typecheck + tests (CI gate)
+bun run prepush       # format + validate (run before pushing)
 ```
+
+### Git hooks (Husky)
+
+Installed automatically on `bun install`:
+
+- **`pre-commit`** — runs lint + typecheck on every commit
+- **`pre-push`** — runs format + lint + typecheck + tests before push
+
+Bypass with `--no-verify` if absolutely needed (not recommended).
 
 ---
 
