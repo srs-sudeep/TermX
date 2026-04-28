@@ -1,10 +1,7 @@
- 
-
-import type { Command } from '@/types';
 import { customCommands } from '@/config/commands.config';
+import type { Command } from '@/types';
 
 export interface Registry {
-   
   resolve: (name: string) => Command | undefined;
 
   all: () => Command[];
@@ -15,7 +12,6 @@ export interface Registry {
 }
 
 export function buildRegistry(commands: Command[]): Registry {
-  
   const byName = new Map<string, Command>();
 
   for (const cmd of commands) {
@@ -66,14 +62,10 @@ export function buildRegistry(commands: Command[]): Registry {
 }
 
 export function createRegistry(): Registry {
-
-  const modules = import.meta.glob<{ default: Command }>(
-    '/src/commands/**/*.ts',
-    { eager: true },
-  );
+  const modules = import.meta.glob<{ default: Command }>('../commands/**/*.ts', { eager: true });
 
   const globCommands: Command[] = Object.values(modules)
-    .map((mod) => mod.default)
+    .map((mod: any) => mod.default)
     .filter(isCommand);
 
   const mergedMap = new Map<string, Command>(
