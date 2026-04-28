@@ -1,4 +1,4 @@
-export const STORAGE_NAMESPACE = 'termfolio:';
+export const STORAGE_NAMESPACE = 'termx:';
 
 function get<T>(key: string, fallback: T): T {
   try {

@@ -12,7 +12,7 @@ interface BootLine {
 }
 
 const BOOT_LINES: BootLine[] = [
-  { tag: 'OK', text: 'Booting termfolio kernel ......................', delay: 0 },
+  { tag: 'OK', text: 'Booting TermX kernel ..........................', delay: 0 },
   { tag: 'OK', text: 'Loading user configuration ....................', delay: 150 },
   { tag: 'OK', text: 'Mounting virtual filesystem ...................', delay: 300 },
   { tag: 'OK', text: 'Registering 24 commands .......................', delay: 450 },
@@ -135,7 +135,7 @@ export function BootSequence({ onDone }: BootSequenceProps) {
       <div className="mt-6 max-w-md text-xs text-[var(--muted)] space-y-0.5">
         <div className="flex justify-between">
           <span className="opacity-70">build</span>
-          <span className="text-[var(--fg)]">termfolio · v2.0.0</span>
+          <span className="text-[var(--fg)]">TermX · v2.0.0</span>
         </div>
         <div className="flex justify-between">
           <span className="opacity-70">total uptime</span>

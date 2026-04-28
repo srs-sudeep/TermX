@@ -1,7 +1,7 @@
 import type { Config } from 'tailwindcss';
 
 /**
- * Tailwind config for termfolio.
+ * Tailwind config for TermX.
  *
  * We intentionally do NOT extend the default color palette here —
  * all theme colors are CSS variables (--bg, --fg, --accent, etc.)

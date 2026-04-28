@@ -1,5 +1,5 @@
-import { describe, it, expect, beforeEach, vi, afterEach } from 'vitest';
 import { storage, STORAGE_NAMESPACE } from '@/lib/storage';
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 
 // ── helpers ────────────────────────────────────────────────────────────────────
 
@@ -24,8 +24,8 @@ describe('storage', () => {
   // ── STORAGE_NAMESPACE ────────────────────────────────────────────────────────
 
   describe('STORAGE_NAMESPACE', () => {
-    it('is the string "termfolio:"', () => {
-      expect(STORAGE_NAMESPACE).toBe('termfolio:');
+    it('is the string "termx:"', () => {
+      expect(STORAGE_NAMESPACE).toBe('termx:');
     });
   });
 
