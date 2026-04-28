@@ -8,6 +8,12 @@
 
 ---
 
+## Inspiration
+
+TermX was inspired by [satnaing/terminal-portfolio](https://github.com/satnaing/terminal-portfolio).
+
+---
+
 ## Highlights
 
 - **Pure terminal interface** — keyboard-first, no traditional UI to design.
