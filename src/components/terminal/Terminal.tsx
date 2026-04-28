@@ -68,7 +68,7 @@ export function Terminal({ bootRan = false }: TerminalProps) {
       role="region"
       aria-label="Terminal"
     >
-      <div className="px-5 sm:px-7 py-5 max-w-[1100px] mx-auto">
+      <div className="px-5 sm:px-7 py-5 mx-auto">
         <TerminalHistory />
         <TerminalInput
           promptConfig={userConfig.prompt}

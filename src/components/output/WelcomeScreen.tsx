@@ -1,5 +1,5 @@
 import { userConfig } from '@/config';
-import { buildBlockBanner } from '@/lib/asciiArt';
+import { buildBlockBanner, PORTRAIT_ART } from '@/lib/asciiArt';
 import { motion, useReducedMotion } from 'framer-motion';
 
 const REPO_URL = 'https://github.com/srs-sudeep/TermX';
@@ -24,12 +24,18 @@ export function WelcomeScreen({ config = userConfig }: WelcomeScreenProps) {
       className="font-mono text-sm leading-tight"
       data-welcome-screen
     >
-      <pre
-        className="text-[var(--accent)] whitespace-pre select-none inline-block min-w-0"
-        aria-label={`${config.user.name} — terminal portfolio`}
-      >
-        {banner}
-      </pre>
+      <div className="relative">
+        <pre
+          className="text-[var(--accent)] whitespace-pre select-none block"
+          aria-label={`${config.user.name} — terminal portfolio`}
+        >
+          {banner}
+        </pre>
+
+        <pre className="hidden md:block absolute top-0 right-0 text-[var(--accent)]/50 whitespace-pre select-none">
+          {PORTRAIT_ART}
+        </pre>
+      </div>
 
       <motion.div
         initial={initial}
