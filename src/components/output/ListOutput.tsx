@@ -5,26 +5,6 @@ interface ListOutputProps {
   items: ListItem[];
 }
 
-/**
- * Renders a structured list of items in a clean two-column grid:
- *
- *     label    -    description
- *     label    -    description
- *
- * Special item shapes:
- *  - `indent: 0` with no `value`/`url` → bold accent header that spans
- *    both columns (e.g. category names in `help`, "Contact" in `contact`).
- *  - `label === ''` with no `value`/`url` → blank spacer line (visual gap
- *    between groups; satisfies the help command's structural requirement
- *    of having at least one indent-0 item).
- *  - `url` present → label is rendered as a clickable, accent-colored link.
- *  - `value` present → rendered in the right column. A subtle dash
- *    separator is auto-inserted unless the value already begins with
- *    a hyphen / en-dash / em-dash.
- *
- * The label column uses `max-content` so all labels share the same right
- * edge — producing the aligned column look of the reference design.
- */
 export function ListOutput({ items }: ListOutputProps) {
   return (
     <div
@@ -74,9 +54,7 @@ export function ListOutput({ items }: ListOutputProps) {
         );
 
         const valueText = item.value ?? '';
-        // Suppress the auto-dash separator when the value already begins
-        // with a recognisable connector character — prevents output like
-        // `- => autocomplete` or `- — note`.
+
         const valueStartsWithDash = /^\s*[-—–=→»➤]/.test(valueText);
 
         return (

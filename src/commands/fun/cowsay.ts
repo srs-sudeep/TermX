@@ -1,6 +1,5 @@
 import type { Command } from '@/types';
 
-/** Wrap text into lines no wider than maxLen characters. */
 function wordWrap(text: string, maxLen: number): string[] {
   const words = text.split(' ');
   const lines: string[] = [];
@@ -19,7 +18,6 @@ function wordWrap(text: string, maxLen: number): string[] {
   return lines.length > 0 ? lines : [''];
 }
 
-/** Build a cowsay-style speech bubble around the given lines. */
 function buildBubble(lines: string[]): string {
   const width = Math.max(...lines.map((l) => l.length));
   const border = '-'.repeat(width + 2);

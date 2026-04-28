@@ -5,10 +5,7 @@ import { ThemePicker } from './ThemePicker';
 import { cn } from '@/lib/cn';
 
 interface SettingsPanelProps {
-  /**
-   * Provide this callback to render the panel as a modal overlay.
-   * Omit to render it inline inside terminal output.
-   */
+   
   onClose?: () => void;
 }
 
@@ -19,7 +16,6 @@ interface ToggleRowProps {
   onChange: (v: boolean) => void;
 }
 
-/** Accessible ON/OFF toggle row used in the Features section. */
 function ToggleRow({ label, description, checked, onChange }: ToggleRowProps) {
   return (
     <div className="flex items-start justify-between gap-4">
@@ -45,15 +41,6 @@ function ToggleRow({ label, description, checked, onChange }: ToggleRowProps) {
   );
 }
 
-/**
- * Full settings panel with theme, font, and feature toggles.
- *
- * Rendered in two contexts:
- *  - Inline: from the `settings` command (`{ type: 'settings-panel' }` output).
- *    No `onClose` prop — renders directly in the terminal history.
- *  - Modal: from the gear button in `<TitleBar />`.
- *    `onClose` is provided — renders a fixed overlay with a backdrop.
- */
 export function SettingsPanel({ onClose }: SettingsPanelProps) {
   const {
     currentTheme,
@@ -94,7 +81,7 @@ export function SettingsPanel({ onClose }: SettingsPanelProps) {
 
   const content = (
     <div className="font-mono text-[var(--fg)] space-y-5 text-sm">
-      {/* Header */}
+      { }
       <div className="flex items-center justify-between">
         <h2 className="text-[var(--accent)] font-bold tracking-wider text-xs uppercase">
           Settings
@@ -110,7 +97,7 @@ export function SettingsPanel({ onClose }: SettingsPanelProps) {
         )}
       </div>
 
-      {/* ── Theme ──────────────────────────────────────────────────────── */}
+      { }
       <section aria-labelledby="settings-theme-heading">
         <h3
           id="settings-theme-heading"
@@ -125,7 +112,7 @@ export function SettingsPanel({ onClose }: SettingsPanelProps) {
         </p>
       </section>
 
-      {/* ── Font ───────────────────────────────────────────────────────── */}
+      { }
       <section aria-labelledby="settings-font-heading">
         <h3
           id="settings-font-heading"
@@ -134,7 +121,7 @@ export function SettingsPanel({ onClose }: SettingsPanelProps) {
           Font
         </h3>
 
-        {/* Font family */}
+        { }
         <div className="flex gap-2 mb-2">
           <input
             type="text"
@@ -167,7 +154,7 @@ export function SettingsPanel({ onClose }: SettingsPanelProps) {
           )}
         </div>
 
-        {/* Font size */}
+        { }
         <div className="flex gap-2 items-center" role="group" aria-label="Font size">
           {(['sm', 'md', 'lg'] as FontSize[]).map((s) => (
             <button
@@ -190,7 +177,7 @@ export function SettingsPanel({ onClose }: SettingsPanelProps) {
         </div>
       </section>
 
-      {/* ── Features ───────────────────────────────────────────────────── */}
+      { }
       <section aria-labelledby="settings-features-heading">
         <h3
           id="settings-features-heading"
@@ -214,7 +201,7 @@ export function SettingsPanel({ onClose }: SettingsPanelProps) {
         </div>
       </section>
 
-      {/* ── Danger zone ────────────────────────────────────────────────── */}
+      { }
       <section aria-labelledby="settings-danger-heading">
         <h3
           id="settings-danger-heading"
@@ -231,7 +218,6 @@ export function SettingsPanel({ onClose }: SettingsPanelProps) {
     </div>
   );
 
-  // ── Inline mode (from `settings` command) ─────────────────────────────────
   if (!onClose) {
     return (
       <div className="border border-[var(--border)] p-4 max-w-lg">
@@ -240,7 +226,6 @@ export function SettingsPanel({ onClose }: SettingsPanelProps) {
     );
   }
 
-  // ── Modal mode (from gear button) ─────────────────────────────────────────
   return (
     <div
       className="fixed inset-0 z-50 flex items-center justify-center p-4"
@@ -248,13 +233,13 @@ export function SettingsPanel({ onClose }: SettingsPanelProps) {
       aria-modal="true"
       aria-label="Settings"
     >
-      {/* Backdrop */}
+      { }
       <div
         className="absolute inset-0 bg-black/60"
         onClick={onClose}
         aria-hidden="true"
       />
-      {/* Panel */}
+      { }
       <div className="relative bg-[var(--bg)] border border-[var(--border)] p-6 w-full max-w-lg max-h-[80vh] overflow-y-auto shadow-2xl">
         {content}
       </div>

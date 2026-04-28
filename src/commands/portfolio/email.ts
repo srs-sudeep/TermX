@@ -8,6 +8,6 @@ export default {
   execute: (ctx) => ({
     type: 'redirect',
     url: `mailto:${ctx.config.contact.email}`,
-    newTab: false, // mailto: doesn't navigate; false uses window.location.href
+    newTab: false, 
   }),
 } satisfies Command;

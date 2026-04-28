@@ -1,16 +1,9 @@
-/**
- * USER-EDITABLE CONFIG — this is your portfolio's personal data.
- *
- * EDIT THIS FILE — replace every value below with your own details.
- * The terminal engine reads from this file; nothing else needs to change.
- *
- * Docs: docs/CUSTOMIZATION.md
- */
+ 
 
 import type { UserConfig } from '@/types';
 
 export const userConfig = {
-  // ── Site metadata ──────────────────────────────────────────────────────
+  
   meta: {
     siteName: 'Sudeep Ranjan Sahoo | iamsrs',
     siteDescription:
@@ -19,20 +12,16 @@ export const userConfig = {
     ogImage: '/og-image.png',
   },
 
-  // ── Personal details ───────────────────────────────────────────────────
   user: {
     name: 'Sudeep Ranjan Sahoo',
-    handle: 'srs',       // shown in the terminal prompt
+    handle: 'srs',       
     title: 'Business Architecture Analyst | AI Engineering & Cloud Architecture',
     location: 'Tokyo, Japan',
     bio: 'Computer Science engineer building AI-first systems, cloud-native architecture, and high-performance full-stack products.',
     timezone: 'Asia/Tokyo',
-    // avatar: '/avatar.png',  // uncomment and add your image to public/
+    
   },
 
-  // ── Prompt template ────────────────────────────────────────────────────
-  // Tokens: {user}, {host}, {path}
-  // Rendered: srs@iamsrs:~$
   prompt: {
     template: '{user}@{host}:{path}$ ',
     user: 'srs',
@@ -40,7 +29,6 @@ export const userConfig = {
     path: '~',
   },
 
-  // ── About ──────────────────────────────────────────────────────────────
   about: {
     paragraphs: [
       "I am a Computer Science engineer passionate about AI engineering, cloud infrastructure, and full-stack web development. I enjoy solving hard technical problems from product architecture to deployment.",
@@ -49,7 +37,6 @@ export const userConfig = {
     ],
   },
 
-  // ── Projects ───────────────────────────────────────────────────────────
   projects: [
     {
       slug: 'azure-devops-lifecycle',
@@ -119,7 +106,6 @@ export const userConfig = {
     },
   ],
 
-  // ── Skills ─────────────────────────────────────────────────────────────
   skills: [
     {
       name: 'Languages',
@@ -159,7 +145,6 @@ export const userConfig = {
     },
   ],
 
-  // ── Experience ─────────────────────────────────────────────────────────
   experience: [
     {
       company: 'Accenture Japan',
@@ -208,7 +193,6 @@ export const userConfig = {
     },
   ],
 
-  // ── Education ──────────────────────────────────────────────────────────
   education: [
     {
       institution: 'Indian Institute of Technology, Bhilai',
@@ -233,7 +217,6 @@ export const userConfig = {
     },
   ],
 
-  // ── Social ─────────────────────────────────────────────────────────────
   social: [
     {
       name: 'GitHub',
@@ -261,19 +244,14 @@ export const userConfig = {
     },
   ],
 
-  // ── Contact ────────────────────────────────────────────────────────────
   contact: {
     email: 'sudeep160403@gmail.com',
     calendarUrl: 'https://www.iamsrs.com/contact',
     preferredContact: 'email',
   },
 
-  // ── Resume ─────────────────────────────────────────────────────────────
-  // Place your PDF at public/resume.pdf and point to it here.
   resumeUrl: '/resume.pdf',
 
-  // ── Fortunes ───────────────────────────────────────────────────────────
-  // Shown by the `fortune` command. Add as many as you like.
   fortunes: [
     'Build it once, scale it forever.',
     'Architecture is strategy made executable.',

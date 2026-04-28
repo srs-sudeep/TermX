@@ -1,10 +1,8 @@
 import type { Command } from '@/types';
 import { useThemeStore } from '@/store/themeStore';
 
-/** Module-level timestamp — recorded when the app first loads this module. */
 const SESSION_START = Date.now();
 
-/** Format elapsed milliseconds as "Xm Ys". */
 function formatUptime(ms: number): string {
   const totalSecs = Math.floor(ms / 1000);
   const mins = Math.floor(totalSecs / 60);
@@ -13,7 +11,6 @@ function formatUptime(ms: number): string {
   return `${mins}m ${secs}s`;
 }
 
-/** Left-pad all logo lines to equal width. */
 const LOGO_LINES = [
   '  .---------.  ',
   '  | >_      |  ',

@@ -1,6 +1,5 @@
 import type { Command } from '@/types';
 
-/** Converts a 1–5 skill level to a █░ bar string. */
 function levelBar(level: number | undefined): string {
   if (!level) return '';
   const filled = Math.min(5, Math.max(1, level));

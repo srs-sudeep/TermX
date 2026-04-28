@@ -4,11 +4,11 @@ import { storage } from '@/lib/storage';
 import { useThemeStore } from '@/store/themeStore';
 
 interface BootLine {
-  /** Status tag rendered as a colored prefix (`OK`, `..`, `!!`). */
+   
   tag: 'OK' | '..' | '!!' | '';
-  /** Body text rendered after the tag. Empty string renders as a blank gap. */
+   
   text: string;
-  /** Delay (ms) before this line appears, relative to mount. */
+   
   delay: number;
 }
 
@@ -28,23 +28,10 @@ const TOTAL_DURATION = 1500;
 const DONE_DELAY = 1550;
 
 interface BootSequenceProps {
-  /** Called when the boot sequence finishes (or is skipped). */
+   
   onDone: (bootRan: boolean) => void;
 }
 
-/**
- * Scripted ~1.5-second boot animation shown on first visit.
- *
- * Renders fake init messages with colored status tags and an animated
- * progress bar that fills from 0 → 100 over the boot window. The final
- * "Welcome aboard" line fades in last; control then transfers to the
- * Terminal component which dispatches the `welcome` screen.
- *
- * Auto-skipped when:
- *  - `bootEnabled` is false (user toggled it off in settings),
- *  - `termfolio:visited` is already set in localStorage (repeat visit),
- *  - `prefers-reduced-motion: reduce` is active.
- */
 export function BootSequence({ onDone }: BootSequenceProps) {
   const [visible, setVisible] = useState<number>(0);
 
@@ -76,7 +63,7 @@ export function BootSequence({ onDone }: BootSequenceProps) {
     );
 
     return () => timers.forEach(clearTimeout);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    
   }, []);
 
   const progress = Math.min(100, Math.round((visible / BOOT_LINES.length) * 100));
@@ -88,7 +75,7 @@ export function BootSequence({ onDone }: BootSequenceProps) {
       aria-live="polite"
       aria-label="Boot sequence"
     >
-      {/* Boot lines */}
+      { }
       <div className="space-y-0.5 text-sm leading-relaxed">
         {BOOT_LINES.slice(0, visible).map((line, idx) => {
           if (line.text === '' && line.tag === '') {
@@ -121,7 +108,7 @@ export function BootSequence({ onDone }: BootSequenceProps) {
         })}
       </div>
 
-      {/* Animated progress bar */}
+      { }
       <div className="mt-6 max-w-md">
         <div className="flex items-center justify-between mb-1.5 text-xs text-[var(--muted)]">
           <span>boot progress</span>
@@ -148,7 +135,7 @@ export function BootSequence({ onDone }: BootSequenceProps) {
         </div>
       </div>
 
-      {/* Quick session metadata block */}
+      { }
       <div className="mt-6 max-w-md text-xs text-[var(--muted)] space-y-0.5">
         <div className="flex justify-between">
           <span className="opacity-70">build</span>

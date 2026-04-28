@@ -6,22 +6,10 @@ import { parse, ParseError } from '@/lib/commandParser';
 import { userConfig } from '@/config';
 import type { CommandContext, CommandOutput } from '@/types';
 
-/** Monotonically-increasing counter for stable entry IDs within a session. */
 let idCounter = 0;
 
-/**
- * The terminal dispatch hook.
- *
- * Creates the command registry once on mount, then exposes a `submit(input)`
- * function that runs the full lifecycle: parse → resolve → execute → render.
- *
- * Side-effect outputs (`clear`, `redirect`, `download`) are handled here
- * before the entry reaches the render layer.
- *
- * Returns `{ submit, isProcessing }` for use in `<Terminal>`.
- */
 export function useTerminal() {
-  // Registry is created once and never changes (stable across renders).
+  
   const registry = useMemo(() => createRegistry(), []);
   const [isProcessing, setIsProcessing] = useState(false);
 
@@ -30,17 +18,14 @@ export function useTerminal() {
       const timestamp = Date.now();
       const id = `entry-${timestamp}-${idCounter++}`;
 
-      // Read store actions at call time to avoid stale closures.
       const { appendOutput, updateOutput, clearHistory, addToCommandHistory } =
         useTerminalStore.getState();
       const { currentTheme, setTheme } = useThemeStore.getState();
 
-      // Persist non-empty inputs for ↑/↓ recall.
       if (input.trim()) {
         addToCommandHistory(input);
       }
 
-      // ── Parse ─────────────────────────────────────────────────────────────
       let parsed;
       try {
         parsed = parse(input);
@@ -57,13 +42,11 @@ export function useTerminal() {
         throw e;
       }
 
-      // Blank Enter — record the prompt-only line with no output.
       if (!parsed) {
         appendOutput({ id, input: '', output: null, timestamp });
         return;
       }
 
-      // ── Resolve ───────────────────────────────────────────────────────────
       const cmd = registry.resolve(parsed.name);
       if (!cmd) {
         appendOutput({
@@ -78,7 +61,6 @@ export function useTerminal() {
         return;
       }
 
-      // ── Build context ─────────────────────────────────────────────────────
       const ctx: CommandContext = {
         args: parsed.args,
         flags: parsed.flags,
@@ -93,14 +75,11 @@ export function useTerminal() {
           clear: clearHistory,
         },
         dispatch: (newInput: string) => {
-          // Fire-and-forget; creates its own history entry.
+          
           void submit(newInput);
         },
       };
 
-      // ── Execute ───────────────────────────────────────────────────────────
-      // Append a placeholder entry immediately (null output) so the prompt
-      // line appears in history right away, even for async commands.
       appendOutput({ id, input, output: null, timestamp });
       setIsProcessing(true);
 
@@ -116,10 +95,8 @@ export function useTerminal() {
         setIsProcessing(false);
       }
 
-      // ── Handle side-effect outputs ────────────────────────────────────────
-
       if (output.type === 'clear') {
-        // clearHistory wipes the placeholder entry too — that's correct.
+        
         clearHistory();
         return;
       }
@@ -129,7 +106,7 @@ export function useTerminal() {
         if (isExternal) {
           window.open(output.url, '_blank', 'noopener,noreferrer');
         } else {
-          // newTab: false is used for mailto: — won't actually navigate.
+          
           window.location.href = output.url;
         }
         updateOutput(id, {
@@ -155,7 +132,6 @@ export function useTerminal() {
         return;
       }
 
-      // ── Normal output ─────────────────────────────────────────────────────
       updateOutput(id, output);
     },
     [registry],

@@ -1,41 +1,24 @@
-/**
- * USER-EDITABLE CONFIG — this is your portfolio's theme definitions.
- *
- * EDIT THIS FILE — add, remove, or tweak themes to match your style.
- * Adding a theme: append an entry to the array below.
- * The `theme` command discovers all themes automatically.
- *
- * Contrast notes (WCAG):
- *  - --fg on --bg  : ≥ 7:1  (AAA)
- *  - --muted on --bg : ≥ 4.5:1 (AA)
- *  - semantic colors on --bg : ≥ 4.5:1 (AA)
- *
- * Several muted values below are lightly adjusted (1–2 shades lighter / darker)
- * from their upstream palette defaults to clear 4.5:1. All adjustments are noted.
- *
- * Docs: docs/ADDING_THEMES.md
- */
+ 
 
 import type { Theme } from '@/types';
 
 export const themes: Theme[] = [
-  // ── Dark themes ────────────────────────────────────────────────────────
 
   {
     name: 'termfolio',
     label: 'Termfolio',
     mode: 'dark',
     colors: {
-      bg: '#1f2430',         // deep slate-blue (matches reference design)
-      fg: '#cfd6e4',         // ≈ 11.0:1 ✓
+      bg: '#1f2430',         
+      fg: '#cfd6e4',         
       cursor: '#5ccfe6',
-      prompt: '#bae67e',     // soft lime ≈ 10.5:1 ✓
-      accent: '#5ccfe6',     // teal ≈ 8.4:1 ✓
+      prompt: '#bae67e',     
+      accent: '#5ccfe6',     
       success: '#bae67e',
-      error: '#ff6e6e',      // ≈ 5.4:1 ✓
-      warning: '#ffd580',    // ≈ 11.2:1 ✓
-      info: '#73d0ff',       // ≈ 9.0:1 ✓
-      muted: '#8a9199',      // ≈ 5.0:1 ✓
+      error: '#ff6e6e',      
+      warning: '#ffd580',    
+      info: '#73d0ff',       
+      muted: '#8a9199',      
       selection: '#34455a',
       border: '#2c3340',
     },
@@ -52,15 +35,15 @@ export const themes: Theme[] = [
     mode: 'dark',
     colors: {
       bg: '#282a36',
-      fg: '#f8f8f2',         // contrast vs bg ≈ 12.6:1 ✓
+      fg: '#f8f8f2',         
       cursor: '#f8f8f2',
-      prompt: '#50fa7b',     // ≈ 9.7:1 ✓
-      accent: '#bd93f9',     // ≈ 7.0:1 ✓
+      prompt: '#50fa7b',     
+      accent: '#bd93f9',     
       success: '#50fa7b',
-      error: '#ff5555',      // ≈ 5.3:1 ✓
-      warning: '#f1fa8c',    // ≈ 13.8:1 ✓
-      info: '#8be9fd',       // ≈ 8.9:1 ✓
-      muted: '#9099bd',      // adjusted from #6272a4 (2.8:1) → ≈ 4.7:1 ✓
+      error: '#ff5555',      
+      warning: '#f1fa8c',    
+      info: '#8be9fd',       
+      muted: '#9099bd',      
       selection: '#44475a',
       border: '#44475a',
     },
@@ -77,15 +60,15 @@ export const themes: Theme[] = [
     mode: 'dark',
     colors: {
       bg: '#272822',
-      fg: '#f8f8f2',         // ≈ 13.0:1 ✓
+      fg: '#f8f8f2',         
       cursor: '#f8f8f2',
-      prompt: '#a6e22e',     // ≈ 8.5:1 ✓
-      accent: '#ae81ff',     // ≈ 6.3:1 ✓
+      prompt: '#a6e22e',     
+      accent: '#ae81ff',     
       success: '#a6e22e',
-      error: '#f92672',      // ≈ 5.5:1 ✓
-      warning: '#e6db74',    // ≈ 12.7:1 ✓
-      info: '#66d9e8',       // ≈ 8.6:1 ✓
-      muted: '#8f908a',      // official comment color ≈ 4.7:1 ✓
+      error: '#f92672',      
+      warning: '#e6db74',    
+      info: '#66d9e8',       
+      muted: '#8f908a',      
       selection: '#49483e',
       border: '#75715e',
     },
@@ -102,15 +85,15 @@ export const themes: Theme[] = [
     mode: 'dark',
     colors: {
       bg: '#2e3440',
-      fg: '#eceff4',         // ≈ 12.5:1 ✓
+      fg: '#eceff4',         
       cursor: '#eceff4',
-      prompt: '#a3be8c',     // ≈ 6.5:1 ✓ — Aurora Green
-      accent: '#88c0d0',     // ≈ 6.6:1 ✓ — Frost 3
+      prompt: '#a3be8c',     
+      accent: '#88c0d0',     
       success: '#a3be8c',
-      error: '#bf616a',      // ≈ 3.9:1 — Aurora Red on Nord Dark; shifted ↓ slightly acceptable
-      warning: '#ebcb8b',    // ≈ 10.4:1 ✓
+      error: '#bf616a',      
+      warning: '#ebcb8b',    
       info: '#88c0d0',
-      muted: '#90a0b8',      // adjusted from #616e88 (2.5:1) → ≈ 4.8:1 ✓
+      muted: '#90a0b8',      
       selection: '#3b4252',
       border: '#434c5e',
     },
@@ -127,15 +110,15 @@ export const themes: Theme[] = [
     mode: 'dark',
     colors: {
       bg: '#282828',
-      fg: '#ebdbb2',         // ≈ 11.5:1 ✓
+      fg: '#ebdbb2',         
       cursor: '#ebdbb2',
-      prompt: '#b8bb26',     // ≈ 7.3:1 ✓
-      accent: '#d3869b',     // ≈ 5.6:1 ✓
+      prompt: '#b8bb26',     
+      accent: '#d3869b',     
       success: '#b8bb26',
-      error: '#fb4934',      // ≈ 5.7:1 ✓
-      warning: '#fabd2f',    // ≈ 10.4:1 ✓
-      info: '#83a598',       // ≈ 5.4:1 ✓
-      muted: '#a89984',      // adjusted from #928374 (3.9:1) → ≈ 5.2:1 ✓
+      error: '#fb4934',      
+      warning: '#fabd2f',    
+      info: '#83a598',       
+      muted: '#a89984',      
       selection: '#3c3836',
       border: '#504945',
     },
@@ -152,15 +135,15 @@ export const themes: Theme[] = [
     mode: 'dark',
     colors: {
       bg: '#1a1b26',
-      fg: '#c0caf5',         // ≈ 10.9:1 ✓
+      fg: '#c0caf5',         
       cursor: '#c0caf5',
-      prompt: '#9ece6a',     // ≈ 7.3:1 ✓
-      accent: '#7aa2f7',     // ≈ 5.6:1 ✓
+      prompt: '#9ece6a',     
+      accent: '#7aa2f7',     
       success: '#9ece6a',
-      error: '#f7768e',      // ≈ 5.2:1 ✓
-      warning: '#e0af68',    // ≈ 7.5:1 ✓
-      info: '#7dcfff',       // ≈ 9.0:1 ✓
-      muted: '#8892ba',      // adjusted from #565f89 (2.7:1) → ≈ 5.6:1 ✓
+      error: '#f7768e',      
+      warning: '#e0af68',    
+      info: '#7dcfff',       
+      muted: '#8892ba',      
       selection: '#283457',
       border: '#292e42',
     },
@@ -177,15 +160,15 @@ export const themes: Theme[] = [
     mode: 'dark',
     colors: {
       bg: '#282c34',
-      fg: '#abb2bf',         // ≈ 7.8:1 ✓
+      fg: '#abb2bf',         
       cursor: '#528bff',
-      prompt: '#98c379',     // ≈ 6.6:1 ✓
-      accent: '#61afef',     // ≈ 5.8:1 ✓
+      prompt: '#98c379',     
+      accent: '#61afef',     
       success: '#98c379',
-      error: '#e06c75',      // ≈ 5.1:1 ✓
-      warning: '#e5c07b',    // ≈ 8.9:1 ✓
-      info: '#56b6c2',       // ≈ 5.2:1 ✓
-      muted: '#9098b0',      // adjusted from #5c6370 (2.3:1) → ≈ 4.9:1 ✓
+      error: '#e06c75',      
+      warning: '#e5c07b',    
+      info: '#56b6c2',       
+      muted: '#9098b0',      
       selection: '#3e4451',
       border: '#3e4451',
     },
@@ -201,17 +184,17 @@ export const themes: Theme[] = [
     label: 'Solarized Dark',
     mode: 'dark',
     colors: {
-      bg: '#002b36',         // base03
-      fg: '#eee8d5',         // base2 — high contrast on the very dark bg ≈ 12.3:1 ✓
+      bg: '#002b36',         
+      fg: '#eee8d5',         
       cursor: '#eee8d5',
-      prompt: '#859900',     // green ≈ 5.7:1 ✓
-      accent: '#268bd2',     // blue ≈ 4.7:1 ✓
+      prompt: '#859900',     
+      accent: '#268bd2',     
       success: '#859900',
-      error: '#dc322f',      // ≈ 4.6:1 ✓
-      warning: '#b58900',    // ≈ 5.0:1 ✓
-      info: '#2aa198',       // ≈ 4.9:1 ✓
-      muted: '#839496',      // base0 ≈ 4.8:1 ✓ (passes AA on base03 bg)
-      selection: '#073642',  // base02
+      error: '#dc322f',      
+      warning: '#b58900',    
+      info: '#2aa198',       
+      muted: '#839496',      
+      selection: '#073642',  
       border: '#073642',
     },
     font: {
@@ -227,15 +210,15 @@ export const themes: Theme[] = [
     mode: 'dark',
     colors: {
       bg: '#0d0d0d',
-      fg: '#33ff00',         // classic P1 phosphor green ≈ 15.1:1 ✓
+      fg: '#33ff00',         
       cursor: '#33ff00',
       prompt: '#33ff00',
-      accent: '#00cc44',     // ≈ 7.9:1 ✓
+      accent: '#00cc44',     
       success: '#33ff00',
-      error: '#ff3300',      // ≈ 5.6:1 ✓
-      warning: '#ffcc00',    // ≈ 16.8:1 ✓
-      info: '#00ccff',       // ≈ 9.5:1 ✓
-      muted: '#1aaa00',      // dim green ≈ 6.5:1 ✓
+      error: '#ff3300',      
+      warning: '#ffcc00',    
+      info: '#00ccff',       
+      muted: '#1aaa00',      
       selection: '#004400',
       border: '#1a3300',
     },
@@ -246,23 +229,21 @@ export const themes: Theme[] = [
     },
   },
 
-  // ── Light themes ───────────────────────────────────────────────────────
-
   {
     name: 'gruvbox-light',
     label: 'Gruvbox Light',
     mode: 'light',
     colors: {
       bg: '#fbf1c7',
-      fg: '#3c3836',         // ≈ 13.5:1 ✓
+      fg: '#3c3836',         
       cursor: '#282828',
-      prompt: '#79740e',     // dark green ≈ 7.4:1 ✓
-      accent: '#8f3f71',     // dark purple ≈ 7.2:1 ✓
+      prompt: '#79740e',     
+      accent: '#8f3f71',     
       success: '#79740e',
-      error: '#9d0006',      // ≈ 10.1:1 ✓
-      warning: '#b57614',    // ≈ 5.7:1 ✓
-      info: '#076678',       // ≈ 7.6:1 ✓
-      muted: '#665c54',      // adjusted from #7c6f64 (4.3:1) → ≈ 5.7:1 ✓
+      error: '#9d0006',      
+      warning: '#b57614',    
+      info: '#076678',       
+      muted: '#665c54',      
       selection: '#d5c4a1',
       border: '#bdae93',
     },
@@ -278,17 +259,17 @@ export const themes: Theme[] = [
     label: 'Solarized Light',
     mode: 'light',
     colors: {
-      bg: '#fdf6e3',         // base3
-      fg: '#002b36',         // base03 — deep teal/black ≈ 12.2:1 ✓
+      bg: '#fdf6e3',         
+      fg: '#002b36',         
       cursor: '#002b36',
-      prompt: '#2aa198',     // teal ≈ 4.6:1 ✓
-      accent: '#268bd2',     // blue ≈ 4.5:1 ✓
+      prompt: '#2aa198',     
+      accent: '#268bd2',     
       success: '#2aa198',
-      error: '#dc322f',      // ≈ 5.1:1 ✓
-      warning: '#b58900',    // ≈ 5.3:1 ✓
+      error: '#dc322f',      
+      warning: '#b58900',    
       info: '#268bd2',
-      muted: '#546e7a',      // adjusted from #93a1a1 (2.5:1) → ≈ 5.0:1 ✓
-      selection: '#eee8d5',  // base2
+      muted: '#546e7a',      
+      selection: '#eee8d5',  
       border: '#ddd6c1',
     },
     font: {
@@ -304,15 +285,15 @@ export const themes: Theme[] = [
     mode: 'light',
     colors: {
       bg: '#ffffff',
-      fg: '#1a1a1a',         // ≈ 19.1:1 ✓
+      fg: '#1a1a1a',         
       cursor: '#1a1a1a',
-      prompt: '#0a5c36',     // dark green ≈ 9.4:1 ✓
-      accent: '#1a56db',     // dark blue ≈ 5.8:1 ✓
-      success: '#057a55',    // ≈ 5.4:1 ✓
-      error: '#c81e1e',      // ≈ 5.8:1 ✓
-      warning: '#9f580a',    // ≈ 5.6:1 ✓
+      prompt: '#0a5c36',     
+      accent: '#1a56db',     
+      success: '#057a55',    
+      error: '#c81e1e',      
+      warning: '#9f580a',    
       info: '#1a56db',
-      muted: '#6b7280',      // Tailwind gray-500 ≈ 4.8:1 ✓
+      muted: '#6b7280',      
       selection: '#dbeafe',
       border: '#e5e7eb',
     },
@@ -323,24 +304,22 @@ export const themes: Theme[] = [
     },
   },
 
-  // ── Experimental themes (artistic; contrast relaxed by design) ─────────
-
   {
     name: 'matrix',
     label: 'Matrix',
     mode: 'dark',
-    experimental: true, // artistic — green-on-black, may not meet AAA for all colors
+    experimental: true, 
     colors: {
       bg: '#000000',
-      fg: '#00ff41',         // bright matrix green ≈ 15.4:1 ✓
+      fg: '#00ff41',         
       cursor: '#00ff41',
       prompt: '#00ff41',
-      accent: '#00b32c',     // ≈ 7.3:1 ✓
+      accent: '#00b32c',     
       success: '#00ff41',
-      error: '#ff0000',      // ≈ 5.3:1 ✓
-      warning: '#ffff00',    // ≈ 19.6:1 ✓
-      info: '#00ffff',       // ≈ 16.5:1 ✓
-      muted: '#008f11',      // dim green ≈ 4.9:1 ✓
+      error: '#ff0000',      
+      warning: '#ffff00',    
+      info: '#00ffff',       
+      muted: '#008f11',      
       selection: '#003b00',
       border: '#003b00',
     },
@@ -355,23 +334,23 @@ export const themes: Theme[] = [
     name: 'retro',
     label: 'Retro CRT',
     mode: 'dark',
-    experimental: true, // artistic — amber phosphor CRT aesthetic
+    experimental: true, 
     colors: {
-      bg: '#1a0a00',         // deep warm black
-      fg: '#ff8c00',         // amber phosphor ≈ 8.0:1 ✓
+      bg: '#1a0a00',         
+      fg: '#ff8c00',         
       cursor: '#ff8c00',
-      prompt: '#ffa500',     // bright amber ≈ 9.7:1 ✓
-      accent: '#ff6600',     // ≈ 6.3:1 ✓
+      prompt: '#ffa500',     
+      accent: '#ff6600',     
       success: '#ffa500',
-      error: '#ff2200',      // red-orange ≈ 5.2:1 ✓
-      warning: '#ffcc00',    // ≈ 14.9:1 ✓
-      info: '#ff9900',       // ≈ 9.0:1 ✓
-      muted: '#cc7000',      // dim amber ≈ 5.1:1 ✓
+      error: '#ff2200',      
+      warning: '#ffcc00',    
+      info: '#ff9900',       
+      muted: '#cc7000',      
       selection: '#3d1f00',
       border: '#3d1f00',
     },
     font: {
-      // Courier New for the authentic CRT/terminal feel
+      
       family: '"Courier New", "Cascadia Code", monospace',
       size: '14px',
       lineHeight: '1.7',

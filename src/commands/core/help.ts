@@ -1,29 +1,6 @@
 import type { Command, ListItem } from '@/types';
 import { createRegistry } from '@/lib/commandRegistry';
 
-/**
- * `help` — list every visible command in a single, alphabetically sorted
- * column with each entry's one-line description, followed by a short
- * keyboard-shortcut footer.
- *
- * Output shape — designed to render through the redesigned `<ListOutput>`:
- *
- *     about       - About me
- *     clear       - Clear the terminal
- *     ...
- *
- *     Tab            => autocompletes the command
- *     Up Arrow       => recall previous command
- *     Ctrl + l       => clear the terminal
- *
- * Structural notes:
- *  - All command entries use `indent: 1` so they share the aligned label column.
- *  - A blank `{ label: '', indent: 0 }` separator sits between commands and
- *    the keyboard footer. This also satisfies the help.test.ts invariant
- *    that requires at least one `indent: 0` item (renders as visual gap).
- *  - Hidden commands are filtered out — the registry's `hidden: true` flag
- *    is the single source of truth for what shows here.
- */
 export default {
   name: 'help',
   aliases: ['?', 'commands'],

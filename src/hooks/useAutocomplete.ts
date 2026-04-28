@@ -5,11 +5,11 @@ import type { KeyboardEvent } from 'react';
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 
 interface UseAutocompleteResult {
-  /** The suffix to render as ghost text after the current input value. */
+   
   ghostSuffix: string;
-  /** KeyDown handler to attach to the terminal input. */
+   
   onKeyDown: (e: KeyboardEvent<HTMLInputElement>) => void;
-  /** Call when the input is accepted/cleared so ghost state resets. */
+   
   reset: () => void;
 }
 
@@ -25,15 +25,6 @@ function buildAutocompleteCtx(): CommandContext {
   };
 }
 
-/**
- * Ghost-text Tab-cycle autocomplete.
- *
- * - First Tab: compute matches. Single match → complete immediately.
- *   Multiple matches → show first as inline gray ghost text.
- * - Subsequent Tabs: cycle through matches, updating the ghost suffix.
- * - Right arrow at end-of-input (handled in TerminalInput) → accept ghost.
- * - Any value change from outside resets the cycle.
- */
 export function useAutocomplete(
   registry: Registry | null,
   value: string,
@@ -42,7 +33,6 @@ export function useAutocomplete(
   const [matches, setMatches] = useState<string[]>([]);
   const [cycleIdx, setCycleIdx] = useState(0);
 
-  // Reset cycle whenever the user types (value changes from outside).
   const prevValueRef = useRef(value);
   useEffect(() => {
     if (value !== prevValueRef.current) {
@@ -57,7 +47,6 @@ export function useAutocomplete(
     setCycleIdx(0);
   }, []);
 
-  /** The suffix to append visually after the typed text. */
   const ghostSuffix = useMemo(() => {
     if (matches.length === 0) return '';
     const suggestion = matches[cycleIdx];
@@ -65,10 +54,10 @@ export function useAutocomplete(
     const tokens = trimmed.split(/\s+/);
 
     if (tokens.length === 1) {
-      // Command completion: "co" + "ffee"
+      
       return suggestion.startsWith(tokens[0]) ? suggestion.slice(tokens[0].length) : '';
     } else {
-      // Argument completion: "theme se" → ghost is "t" (rest of "set")
+      
       const partial = tokens.slice(1).join(' ');
       return suggestion.startsWith(partial) ? suggestion.slice(partial.length) : suggestion;
     }
@@ -85,7 +74,7 @@ export function useAutocomplete(
       const cmdName = tokens[0].toLowerCase();
 
       if (tokens.length === 1) {
-        // ── Command name completion ───────────────────────────────────────
+        
         if (matches.length === 0) {
           const newMatches = registry.complete(cmdName);
           if (newMatches.length === 0) return;
@@ -99,7 +88,7 @@ export function useAutocomplete(
           setCycleIdx((i) => (i + 1) % matches.length);
         }
       } else {
-        // ── Argument completion ───────────────────────────────────────────
+        
         const cmd = registry.resolve(cmdName);
         if (!cmd?.autocomplete) return;
         const partial = tokens.slice(1).join(' ');

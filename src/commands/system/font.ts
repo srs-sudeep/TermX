@@ -19,7 +19,6 @@ export default {
     const sub = ctx.args[0]?.toLowerCase();
     const { customFont, fontSize, setFont, setFontSize } = useThemeStore.getState();
 
-    // ── font (no args) ──────────────────────────────────────────────────────
     if (!sub) {
       const lines = [
         `Font family : ${customFont ?? '(theme default)'}`,
@@ -33,7 +32,6 @@ export default {
       return { type: 'text', content: lines.join('\n'), tone: 'muted' };
     }
 
-    // ── font set <family> ───────────────────────────────────────────────────
     if (sub === 'set') {
       const family = ctx.args[1];
       if (!family) return { type: 'error', message: 'Usage: font set "<font-family>"' };
@@ -48,7 +46,6 @@ export default {
       };
     }
 
-    // ── font reset ──────────────────────────────────────────────────────────
     if (sub === 'reset') {
       setFont(null);
       applyFontFamily(null, ctx.theme.current);
@@ -60,10 +57,9 @@ export default {
       };
     }
 
-    // ── font size <sm|md|lg> ────────────────────────────────────────────────
     if (sub === 'size') {
       const sizeArg = ctx.args[1];
-      // Cast to string[] so TypeScript's includes() accepts the string arg.
+      
       if (!sizeArg || !(VALID_SIZES as string[]).includes(sizeArg)) {
         return {
           type: 'error',

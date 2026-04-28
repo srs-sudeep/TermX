@@ -20,7 +20,6 @@ export default {
       };
     }
 
-    // Clear all termfolio: namespaced keys from localStorage.
     try {
       const keysToRemove: string[] = [];
       for (let i = 0; i < localStorage.length; i++) {
@@ -31,10 +30,9 @@ export default {
       }
       keysToRemove.forEach((k) => localStorage.removeItem(k));
     } catch {
-      // Ignore storage errors — proceed with reload anyway.
+      
     }
 
-    // Reload after a short delay so the user sees the success message.
     setTimeout(() => window.location.reload(), 800);
 
     return {

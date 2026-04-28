@@ -6,7 +6,7 @@ export default {
   usage: 'echo <text>',
   category: 'core',
   execute: (ctx) => {
-    // Reconstruct the output from args (flags are intentionally ignored).
+    
     const content = ctx.args.join(' ');
     return { type: 'text', content: content || '' };
   },

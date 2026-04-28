@@ -1,24 +1,7 @@
-/**
- * asciiArt.ts
- * Decorative ASCII art used by the `welcome` command.
- *
- * Re-exports `buildBanner` from asciiFonts.ts under a clearer name and
- * adds a static decorative portrait shown beside the name banner.
- *
- * No React imports — must stay framework-agnostic so commands can use it.
- */
+ 
 
 export { buildBanner as buildBlockBanner } from './asciiFonts';
 
-/**
- * Author-agnostic decorative ASCII emblem shown on the right of the
- * welcome screen. Designed to balance with a 5–6 row name banner on a
- * standard desktop viewport. Roughly 30 cols wide × 14 rows tall.
- *
- * Composition: a stylised "data mask" of glyphs reminiscent of classic
- * neofetch portraits — keeps the welcome screen visually anchored on
- * the right without being tied to any one identity.
- */
 export const PORTRAIT_ART = String.raw`         ,##,,eew,
        ,##############C
       a##############@##

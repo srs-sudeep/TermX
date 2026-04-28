@@ -7,7 +7,6 @@ interface TextOutputProps {
   tone?: 'normal' | 'success' | 'error' | 'warning' | 'muted';
 }
 
-/** Map semantic tones to CSS variable classes. */
 const TONE_CLASS: Record<NonNullable<TextOutputProps['tone']>, string> = {
   normal: 'text-[var(--fg)]',
   success: 'text-[var(--success)]',
@@ -16,14 +15,6 @@ const TONE_CLASS: Record<NonNullable<TextOutputProps['tone']>, string> = {
   muted: 'text-[var(--muted)]',
 };
 
-/**
- * Renders a plain text command output, with optional semantic tone.
- * Preserves newlines using `whitespace-pre-wrap`.
- *
- * When the `typewriter` setting is enabled in the theme store, text is
- * animated character-by-character via `<Typewriter>`. The effect honours
- * `prefers-reduced-motion` — motion is skipped automatically.
- */
 export function TextOutput({ content, tone = 'normal' }: TextOutputProps) {
   const typewriter = useThemeStore((s) => s.typewriter);
   const toneClass = TONE_CLASS[tone];

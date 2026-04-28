@@ -3,15 +3,8 @@ interface TableOutputProps {
   rows: string[][];
 }
 
-/**
- * Renders a monospace-aligned table with a header row.
- *
- * Column widths are computed from the maximum content length in each column
- * so all rows align. Cells overflow horizontally on mobile rather than
- * stacking — this preserves the terminal aesthetic.
- */
 export function TableOutput({ headers, rows }: TableOutputProps) {
-  // Compute max width per column (content length only — no padding).
+  
   const colWidths = headers.map((h, colIdx) => {
     const dataMax = rows.reduce(
       (max, row) => Math.max(max, (row[colIdx] ?? '').length),
@@ -20,7 +13,6 @@ export function TableOutput({ headers, rows }: TableOutputProps) {
     return Math.max(h.length, dataMax);
   });
 
-  /** Pads a string to a given width with spaces. */
   function pad(str: string, width: number) {
     return str + ' '.repeat(Math.max(0, width - str.length));
   }

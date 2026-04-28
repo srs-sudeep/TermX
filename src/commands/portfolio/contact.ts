@@ -22,7 +22,6 @@ export default {
       });
     }
 
-    // Add preferred social link as a highlight
     const preferred = social.find(
       (s) => s.name.toLowerCase() === contact.preferredContact,
     );

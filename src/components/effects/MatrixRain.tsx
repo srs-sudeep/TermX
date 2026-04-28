@@ -1,19 +1,9 @@
 import { useEffect, useRef } from 'react';
 import { useTerminalStore } from '@/store/terminalStore';
 
-/** Katakana range used for the classic matrix rain effect. */
 const CHARS =
   'アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲン';
 
-/**
- * Full-screen canvas Matrix rain effect.
- *
- * Renders a fixed overlay that covers the entire viewport.
- * Pressing Escape clears the terminal history, which removes this entry
- * from the render tree and exits the effect.
- *
- * Lazy-loaded from `OutputRenderer` via `React.lazy`.
- */
 export default function MatrixRain() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const clearHistory = useTerminalStore((s) => s.clearHistory);
@@ -51,7 +41,6 @@ export default function MatrixRain() {
         const char = CHARS[Math.floor(Math.random() * CHARS.length)];
         const y = drops[i] * FONT_SIZE;
 
-        // Brighter "head" character, dimmer trail.
         ctx.fillStyle = drops[i] > 0 && Math.random() > 0.8 ? '#afffaf' : '#00ff41';
         ctx.fillText(char, i * FONT_SIZE, y);
 

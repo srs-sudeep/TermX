@@ -22,7 +22,6 @@ export default {
     const { args, flags, config } = ctx;
     let list = config.projects;
 
-    // Filters
     if (flags.featured) {
       list = list.filter((p) => p.featured);
     }
@@ -30,7 +29,6 @@ export default {
       list = list.filter((p) => String(p.year) === String(flags.year));
     }
 
-    // Single project detail
     if (args[0]) {
       const found = list.find((p) => p.slug === args[0]);
       if (!found) {

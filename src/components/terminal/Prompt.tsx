@@ -5,12 +5,6 @@ interface PromptProps {
   muted?: boolean;
 }
 
-/**
- * oh-my-zsh–inspired prompt.
- *
- * Active:  user@host  ~/path  ❯
- * Muted:   user@host:path$   (history entries — subdued single color)
- */
 export function Prompt({ config, muted = false }: PromptProps) {
   if (muted) {
     return (
@@ -27,18 +21,18 @@ export function Prompt({ config, muted = false }: PromptProps) {
 
   return (
     <span className="mr-2 shrink-0 select-none inline-flex items-center gap-0" aria-hidden="true">
-      {/* user@host segment */}
+      { }
       <span className="text-[var(--prompt)] font-semibold">{config.user}</span>
       <span className="text-[var(--muted)]">@</span>
       <span className="text-[var(--accent)] font-semibold">{config.host}</span>
 
-      {/* separator */}
+      { }
       <span className="text-[var(--muted)] mx-1.5">:</span>
 
-      {/* path segment */}
+      { }
       <span className="text-[var(--info)]">{config.path}</span>
 
-      {/* arrow — the oh-my-zsh chevron */}
+      { }
       <span className="text-[var(--prompt)] font-bold ml-1.5">❯</span>
     </span>
   );

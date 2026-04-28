@@ -2,22 +2,10 @@ import { Settings, Folder, Search } from 'lucide-react';
 import { userConfig } from '@/config';
 
 interface TitleBarProps {
-  /** Called when the gear (settings) button is clicked. */
+   
   onGearClick: () => void;
 }
 
-/**
- * macOS-style terminal title bar.
- *
- * - Decorative traffic-light buttons on the left (purely cosmetic; aria-hidden).
- * - Centered window title showing `user@host` along with a small "tab"
- *   pill that shows the current path — gives the title bar the feel of a
- *   real terminal window with a single open tab.
- * - Settings gear button on the right opens the settings modal via `onGearClick`.
- *
- * The bar is sticky at the top of the viewport and reserves a comfortable
- * height for click targets on touch devices.
- */
 export function TitleBar({ onGearClick }: TitleBarProps) {
   const { user, host, path } = userConfig.prompt;
   const title = `${user}@${host}`;
@@ -32,15 +20,14 @@ export function TitleBar({ onGearClick }: TitleBarProps) {
       "
       role="banner"
     >
-      {/* Traffic lights */}
+      { }
       <div className="flex items-center gap-1.5" aria-hidden="true">
         <span className="inline-block w-3 h-3 rounded-full bg-[#ff5f57] shadow-[inset_0_0_0_1px_rgba(0,0,0,0.15)]" />
         <span className="inline-block w-3 h-3 rounded-full bg-[#ffbd2e] shadow-[inset_0_0_0_1px_rgba(0,0,0,0.15)]" />
         <span className="inline-block w-3 h-3 rounded-full bg-[#28c940] shadow-[inset_0_0_0_1px_rgba(0,0,0,0.15)]" />
       </div>
 
-      {/* Tab pill — shows the current shell "tab" (host:path).
-          On narrow viewports the path collapses to keep things tidy. */}
+      { }
       <div
         className="
           absolute left-1/2 -translate-x-1/2
@@ -59,7 +46,7 @@ export function TitleBar({ onGearClick }: TitleBarProps) {
         </span>
       </div>
 
-      {/* Right side — search hint + settings */}
+      { }
       <div className="ml-auto flex items-center gap-1.5">
         <button
           onClick={onGearClick}

@@ -12,7 +12,6 @@ import { AsciiBanner } from '@/components/effects/AsciiBanner';
 import { SettingsPanel } from '@/components/settings/SettingsPanel';
 import { WelcomeScreen } from './WelcomeScreen';
 
-// Heavy effect components are lazy-loaded so they don't bloat the initial bundle.
 const MatrixRain = lazy(() => import('@/components/effects/MatrixRain'));
 const HackEffect = lazy(() => import('@/components/effects/HackEffect'));
 
@@ -20,19 +19,6 @@ interface OutputRendererProps {
   output: CommandOutput;
 }
 
-/**
- * Dispatches a `CommandOutput` to the appropriate renderer component.
- *
- * Handles all non-side-effect output types. The side-effect types
- * (`clear`, `redirect`, `download`) are consumed by `useTerminal` before
- * reaching the render layer and never appear here.
- *
- * Special discriminants that avoid component imports in command files:
- *  - `settings-panel` → `<SettingsPanel />`
- *  - `banner`         → `<AsciiBanner text={buildBanner(name)} />`
- *  - `matrix`         → `<MatrixRain />` (lazy, fixed overlay)
- *  - `hack`           → `<HackEffect />` (lazy, timed animation)
- */
 export function OutputRenderer({ output }: OutputRendererProps) {
   switch (output.type) {
     case 'text':
@@ -76,7 +62,6 @@ export function OutputRenderer({ output }: OutputRendererProps) {
         </Suspense>
       );
 
-    // Side-effect types are never rendered — handled by useTerminal.
     case 'clear':
     case 'redirect':
     case 'download':

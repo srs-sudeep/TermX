@@ -1,8 +1,4 @@
-/**
- * src/config/index.ts
- * Re-exports all config objects.
- * No logic here — data only.
- */
+ 
 
 export { userConfig } from './user.config';
 export { themes } from './themes.config';

@@ -24,12 +24,6 @@ const HACK_LINES = [
   'You have been h4ck3d. Just kidding. 😄',
 ];
 
-/**
- * A timed fake "hacking" animation gag.
- *
- * Shows lines scrolling by one at a time over ~3 seconds,
- * then settles on the final state. Lazy-loaded from `OutputRenderer`.
- */
 export default function HackEffect() {
   const [visible, setVisible] = useState<string[]>([]);
   const [done, setDone] = useState(false);
@@ -44,7 +38,7 @@ export default function HackEffect() {
         clearInterval(interval);
         setDone(true);
       }
-    }, 150); // 21 lines × 150 ms ≈ 3.15 s
+    }, 150); 
 
     return () => clearInterval(interval);
   }, []);

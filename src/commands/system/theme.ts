@@ -2,10 +2,6 @@ import type { Command, ListItem } from '@/types';
 import { themes } from '@/config';
 import { applyTheme } from '@/lib/themeManager';
 
-/**
- * Module-level timer for theme preview revert.
- * Stored here so it persists across command invocations (single-page app).
- */
 let previewTimer: ReturnType<typeof setTimeout> | null = null;
 
 export default {
@@ -16,7 +12,6 @@ export default {
   execute: (ctx) => {
     const sub = ctx.args[0]?.toLowerCase();
 
-    // ── theme list / theme (no args) ────────────────────────────────────────
     if (!sub || sub === 'list') {
       const items: ListItem[] = themes.map((t) => ({
         label: t.name === ctx.theme.current ? `${t.name} ✓` : t.name,
@@ -33,7 +28,6 @@ export default {
       return { type: 'list', items };
     }
 
-    // ── theme set <name> ────────────────────────────────────────────────────
     if (sub === 'set') {
       const name = ctx.args[1];
       if (!name) return { type: 'error', message: 'Usage: theme set <name>' };
@@ -43,7 +37,6 @@ export default {
         return { type: 'error', message: `Theme not found: ${name}. Run "theme list" to see available themes.` };
       }
 
-      // Cancel any active preview
       if (previewTimer) {
         clearTimeout(previewTimer);
         previewTimer = null;
@@ -59,7 +52,6 @@ export default {
       };
     }
 
-    // ── theme preview <name> ────────────────────────────────────────────────
     if (sub === 'preview') {
       const name = ctx.args[1];
       if (!name) return { type: 'error', message: 'Usage: theme preview <name>' };
@@ -69,10 +61,8 @@ export default {
         return { type: 'error', message: `Theme not found: ${name}. Run "theme list" to see available themes.` };
       }
 
-      // Cancel any previous preview timer
       if (previewTimer) clearTimeout(previewTimer);
 
-      // Apply without persisting to the store
       applyTheme(name);
 
       const revertTo = ctx.theme.current;
@@ -94,7 +84,7 @@ export default {
     };
   },
   autocomplete: (partial, ctx) => {
-    // Complete subcommands or theme names after 'set' / 'preview'
+    
     const parts = ctx.raw.trim().split(/\s+/);
     if (parts.length <= 1) return ['list', 'set', 'preview'];
     if (parts.length === 2 && (parts[1] === 'set' || parts[1] === 'preview')) {

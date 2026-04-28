@@ -1,11 +1,5 @@
 import type { Command } from '@/types';
 
-/**
- * `ls` — list the portfolio "directory".
- *
- * Gives the site a file-system feel. Each section is shown as a file or
- * directory. Typing `cat about.txt` or `cd about` navigates to the section.
- */
 export default {
   name: 'ls',
   description: 'List portfolio sections',

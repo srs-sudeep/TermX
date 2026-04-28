@@ -1,6 +1,5 @@
 import type { Command } from '@/types';
 
-/** Sections a user can `cd` into — mirrors the portfolio command names. */
 const VALID_SECTIONS = [
   'about',
   'projects',
@@ -37,7 +36,6 @@ export default {
       };
     }
 
-    // Dispatch runs the section command as a new history entry.
     ctx.dispatch(section);
     return { type: 'text', content: `→ ${section}`, tone: 'muted' };
   },
