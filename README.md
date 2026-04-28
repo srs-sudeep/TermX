@@ -16,16 +16,14 @@ TermX was inspired by [satnaing/terminal-portfolio](https://github.com/satnaing/
 
 ## Highlights
 
-- **Pure terminal interface** — keyboard-first, no traditional UI to design.
-- **Fork-ready** — edit `src/config/user.config.ts` and you're done.
-- **14 themes** — Dracula, Nord, Tokyo Night, Solarized Dark/Light, Matrix, Retro CRT, Gruvbox, Monokai, One Dark, Hacker, Light, and more. Switch live with `theme set <name>`.
-- **Real terminal feel** — `↑`/`↓` history recall, `Tab` autocomplete, `Ctrl+L` / `Ctrl+C` / `Ctrl+U`, blinking cursor, configurable prompt template.
-- **oh-my-zsh–style prompt** — colored `user@host:path ❯` segments.
-- **Boot sequence + ASCII name banner** on first visit (skippable, respects `prefers-reduced-motion`).
-- **Persistent preferences** — theme, font, history saved to `localStorage`. No account needed.
-- **Mobile responsive** — `100dvh` height, soft-keyboard handled, tap targets ≥ 44 px.
-- **Accessible** — `prefers-reduced-motion` respected, screen-reader compatible.
-- **Frontend only** — no backend, no tracking, no data leaves the browser.
+- **Looks and feels like a real terminal** — clean prompt styling, smooth typing, command history, and autocomplete make it feel familiar from the first command.
+- **Easy to make your own** — update your name, projects, experience, and links, and the portfolio is ready to share.
+- **Multiple themes built in** — switch between a range of terminal-inspired looks to match your personal style.
+- **Strong first impression** — a boot sequence and large ASCII banner give the site personality as soon as it opens.
+- **Remembers your preferences** — theme, font, and other settings stay the way you left them.
+- **Works well on desktop and mobile** — the layout stays usable and polished across screen sizes.
+- **Accessible and lightweight** — designed to feel smooth, readable, and distraction-free.
+- **Private by design** — everything runs in the browser with no account, no tracking, and no backend setup.
 
 ---
 
