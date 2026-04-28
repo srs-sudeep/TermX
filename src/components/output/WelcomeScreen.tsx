@@ -24,14 +24,12 @@ export function WelcomeScreen({ config = userConfig }: WelcomeScreenProps) {
       className="font-mono text-sm leading-tight"
       data-welcome-screen
     >
-      <div className="overflow-x-auto">
-        <pre
-          className="text-[var(--accent)] whitespace-pre select-none inline-block min-w-0"
-          aria-label={`${config.user.name} — terminal portfolio`}
-        >
-          {banner}
-        </pre>
-      </div>
+      <pre
+        className="text-[var(--accent)] whitespace-pre select-none inline-block min-w-0"
+        aria-label={`${config.user.name} — terminal portfolio`}
+      >
+        {banner}
+      </pre>
 
       <motion.div
         initial={initial}

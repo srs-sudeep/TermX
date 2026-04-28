@@ -8,7 +8,6 @@ import { TerminalHistory } from './TerminalHistory';
 import { TerminalInput } from './TerminalInput';
 
 interface TerminalProps {
-   
   bootRan?: boolean;
 }
 

@@ -5,11 +5,10 @@ import type { KeyboardEvent } from 'react';
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 
 interface UseAutocompleteResult {
-   
   ghostSuffix: string;
-   
+
   onKeyDown: (e: KeyboardEvent<HTMLInputElement>) => void;
-   
+
   reset: () => void;
 }
 
@@ -54,10 +53,8 @@ export function useAutocomplete(
     const tokens = trimmed.split(/\s+/);
 
     if (tokens.length === 1) {
-      
       return suggestion.startsWith(tokens[0]) ? suggestion.slice(tokens[0].length) : '';
     } else {
-      
       const partial = tokens.slice(1).join(' ');
       return suggestion.startsWith(partial) ? suggestion.slice(partial.length) : suggestion;
     }
@@ -74,7 +71,6 @@ export function useAutocomplete(
       const cmdName = tokens[0].toLowerCase();
 
       if (tokens.length === 1) {
-        
         if (matches.length === 0) {
           const newMatches = registry.complete(cmdName);
           if (newMatches.length === 0) return;
@@ -88,7 +84,6 @@ export function useAutocomplete(
           setCycleIdx((i) => (i + 1) % matches.length);
         }
       } else {
-        
         const cmd = registry.resolve(cmdName);
         if (!cmd?.autocomplete) return;
         const partial = tokens.slice(1).join(' ');
