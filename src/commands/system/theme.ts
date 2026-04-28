@@ -34,7 +34,10 @@ export default {
 
       const theme = themes.find((t) => t.name === name);
       if (!theme) {
-        return { type: 'error', message: `Theme not found: ${name}. Run "theme list" to see available themes.` };
+        return {
+          type: 'error',
+          message: `Theme not found: ${name}. Run "theme list" to see available themes.`,
+        };
       }
 
       if (previewTimer) {
@@ -58,7 +61,10 @@ export default {
 
       const theme = themes.find((t) => t.name === name);
       if (!theme) {
-        return { type: 'error', message: `Theme not found: ${name}. Run "theme list" to see available themes.` };
+        return {
+          type: 'error',
+          message: `Theme not found: ${name}. Run "theme list" to see available themes.`,
+        };
       }
 
       if (previewTimer) clearTimeout(previewTimer);
@@ -84,7 +90,6 @@ export default {
     };
   },
   autocomplete: (partial, ctx) => {
-    
     const parts = ctx.raw.trim().split(/\s+/);
     if (parts.length <= 1) return ['list', 'set', 'preview'];
     if (parts.length === 2 && (parts[1] === 'set' || parts[1] === 'preview')) {

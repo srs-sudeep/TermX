@@ -1,11 +1,12 @@
 interface AsciiBannerProps {
-   
   text: string;
 }
 
 export function AsciiBanner({ text }: AsciiBannerProps) {
-  
-  const label = text.replace(/[█▀▄░▌▐]/g, '').replace(/\s+/g, ' ').trim();
+  const label = text
+    .replace(/[█▀▄░▌▐]/g, '')
+    .replace(/\s+/g, ' ')
+    .trim();
 
   return (
     <pre

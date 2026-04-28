@@ -1,9 +1,6 @@
- 
-
 import type { UserConfig } from '@/types';
 
 export const userConfig = {
-  
   meta: {
     siteName: 'Sudeep Ranjan Sahoo | iamsrs',
     siteDescription:
@@ -14,12 +11,11 @@ export const userConfig = {
 
   user: {
     name: 'Sudeep Ranjan Sahoo',
-    handle: 'srs',       
+    handle: 'srs',
     title: 'Business Architecture Analyst | AI Engineering & Cloud Architecture',
     location: 'Tokyo, Japan',
     bio: 'Computer Science engineer building AI-first systems, cloud-native architecture, and high-performance full-stack products.',
     timezone: 'Asia/Tokyo',
-    
   },
 
   prompt: {
@@ -31,9 +27,9 @@ export const userConfig = {
 
   about: {
     paragraphs: [
-      "I am a Computer Science engineer passionate about AI engineering, cloud infrastructure, and full-stack web development. I enjoy solving hard technical problems from product architecture to deployment.",
-      "I currently work at Accenture Japan as a Business Architecture Analyst, where I focus on ERP systems, AI applications, and cloud-native architecture from requirements and design through delivery.",
-      "I build end-to-end products across web, AI, and systems: from interactive Next.js experiences and distributed applications to government-scale education and healthcare platforms. Outside work, I am learning Japanese, playing badminton, and writing long-form technical essays.",
+      'I am a Computer Science engineer passionate about AI engineering, cloud infrastructure, and full-stack web development. I enjoy solving hard technical problems from product architecture to deployment.',
+      'I currently work at Accenture Japan as a Business Architecture Analyst, where I focus on ERP systems, AI applications, and cloud-native architecture from requirements and design through delivery.',
+      'I build end-to-end products across web, AI, and systems: from interactive Next.js experiences and distributed applications to government-scale education and healthcare platforms. Outside work, I am learning Japanese, playing badminton, and writing long-form technical essays.',
     ],
   },
 
@@ -199,7 +195,7 @@ export const userConfig = {
       degree: 'B.Tech — Computer Science & Engineering',
       start: '2021-11',
       end: '2025-06',
-      details: 'CGPA: 9.28. Director\'s Gold Medallist.',
+      details: "CGPA: 9.28. Director's Gold Medallist.",
     },
     {
       institution: 'SAI International School',

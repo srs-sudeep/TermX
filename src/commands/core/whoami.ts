@@ -7,12 +7,7 @@ export default {
   category: 'core',
   execute: (ctx) => {
     const { name, title, location, bio } = ctx.config.user;
-    const content = [
-      `${name}`,
-      `${title} · ${location}`,
-      '',
-      bio,
-    ].join('\n');
+    const content = [`${name}`, `${title} · ${location}`, '', bio].join('\n');
     return { type: 'text', content };
   },
 } satisfies Command;

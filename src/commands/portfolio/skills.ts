@@ -17,11 +17,7 @@ export default {
 
     for (const category of ctx.config.skills) {
       for (const skill of category.items) {
-        rows.push([
-          category.name,
-          skill.name,
-          levelBar(skill.level),
-        ]);
+        rows.push([category.name, skill.name, levelBar(skill.level)]);
       }
     }
 

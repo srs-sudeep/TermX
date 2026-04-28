@@ -4,12 +4,8 @@ interface TableOutputProps {
 }
 
 export function TableOutput({ headers, rows }: TableOutputProps) {
-  
   const colWidths = headers.map((h, colIdx) => {
-    const dataMax = rows.reduce(
-      (max, row) => Math.max(max, (row[colIdx] ?? '').length),
-      0,
-    );
+    const dataMax = rows.reduce((max, row) => Math.max(max, (row[colIdx] ?? '').length), 0);
     return Math.max(h.length, dataMax);
   });
 
@@ -47,10 +43,7 @@ export function TableOutput({ headers, rows }: TableOutputProps) {
           {rows.map((row, rowIdx) => (
             <tr key={rowIdx}>
               {headers.map((_, colIdx) => (
-                <td
-                  key={colIdx}
-                  className="pr-4 align-top text-[var(--fg)] whitespace-nowrap"
-                >
+                <td key={colIdx} className="pr-4 align-top text-[var(--fg)] whitespace-nowrap">
                   {pad(row[colIdx] ?? '', colWidths[colIdx])}
                 </td>
               ))}

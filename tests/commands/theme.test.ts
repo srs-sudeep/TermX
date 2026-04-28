@@ -19,7 +19,7 @@ afterEach(() => {
 });
 
 // Convenience: a known valid theme name and an invalid one.
-const VALID_THEME = themes[0].name;   // e.g. 'dracula'
+const VALID_THEME = themes[0].name; // e.g. 'dracula'
 const INVALID_THEME = '__no_such_theme__';
 
 // ── suite ──────────────────────────────────────────────────────────────────────

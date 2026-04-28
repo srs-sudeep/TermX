@@ -3,13 +3,7 @@ import type { Command, Experience, Card } from '@/types';
 function toCard(exp: Experience): Card {
   return {
     title: exp.role,
-    subtitle: [
-      exp.company,
-      `${exp.start} – ${exp.end}`,
-      exp.location,
-    ]
-      .filter(Boolean)
-      .join(' · '),
+    subtitle: [exp.company, `${exp.start} – ${exp.end}`, exp.location].filter(Boolean).join(' · '),
     bullets: exp.bullets,
   };
 }

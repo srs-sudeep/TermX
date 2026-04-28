@@ -27,9 +27,5 @@ export function TextOutput({ content, tone = 'normal' }: TextOutputProps) {
     );
   }
 
-  return (
-    <p className={cn('whitespace-pre-wrap break-words', toneClass)}>
-      {content}
-    </p>
-  );
+  return <p className={cn('whitespace-pre-wrap break-words', toneClass)}>{content}</p>;
 }

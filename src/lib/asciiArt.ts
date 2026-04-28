@@ -1,5 +1,3 @@
- 
-
 export { buildBanner as buildBlockBanner } from './asciiFonts';
 
 export const PORTRAIT_ART = String.raw`         ,##,,eew,

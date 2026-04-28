@@ -6,7 +6,6 @@ export default {
   usage: 'echo <text>',
   category: 'core',
   execute: (ctx) => {
-    
     const content = ctx.args.join(' ');
     return { type: 'text', content: content || '' };
   },

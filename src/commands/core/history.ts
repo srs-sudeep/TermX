@@ -11,9 +11,7 @@ export default {
       return { type: 'text', content: 'No command history.', tone: 'muted' };
     }
 
-    const content = cmds
-      .map((cmd, idx) => `  ${String(idx + 1).padStart(3)}  ${cmd}`)
-      .join('\n');
+    const content = cmds.map((cmd, idx) => `  ${String(idx + 1).padStart(3)}  ${cmd}`).join('\n');
 
     return { type: 'text', content, tone: 'muted' };
   },

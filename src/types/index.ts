@@ -1,7 +1,4 @@
- 
-
 export type {
-  
   Command,
   CommandContext,
   CommandOutput,
@@ -11,7 +8,6 @@ export type {
 } from './command';
 
 export type {
-  
   UserConfig,
   Project,
   Skill,
@@ -22,14 +18,6 @@ export type {
   Settings,
 } from './config';
 
-export type {
-  
-  Theme,
-  ThemeColors,
-  ThemeFont,
-} from './theme';
+export type { Theme, ThemeColors, ThemeFont } from './theme';
 
-export type {
-  
-  HistoryEntry,
-} from './output';
+export type { HistoryEntry } from './output';

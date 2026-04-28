@@ -23,7 +23,6 @@ export default {
         timeZoneName: 'short',
       });
     } catch {
-      
       formatted = now.toLocaleString();
     }
 

@@ -1,7 +1,3 @@
- 
-
 import type { Command } from '@/types';
 
-export const customCommands: Command[] = [
-
-];
+export const customCommands: Command[] = [];

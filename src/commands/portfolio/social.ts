@@ -34,7 +34,5 @@ export default {
     return { type: 'list', items };
   },
   autocomplete: (partial, ctx) =>
-    ctx.config.social
-      .map((s) => s.name.toLowerCase())
-      .filter((n) => n.startsWith(partial)),
+    ctx.config.social.map((s) => s.name.toLowerCase()).filter((n) => n.startsWith(partial)),
 } satisfies Command;

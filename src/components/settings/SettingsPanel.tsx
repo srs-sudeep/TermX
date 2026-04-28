@@ -5,7 +5,6 @@ import { ThemePicker } from './ThemePicker';
 import { cn } from '@/lib/cn';
 
 interface SettingsPanelProps {
-   
   onClose?: () => void;
 }
 
@@ -81,7 +80,7 @@ export function SettingsPanel({ onClose }: SettingsPanelProps) {
 
   const content = (
     <div className="font-mono text-[var(--fg)] space-y-5 text-sm">
-      { }
+      {}
       <div className="flex items-center justify-between">
         <h2 className="text-[var(--accent)] font-bold tracking-wider text-xs uppercase">
           Settings
@@ -97,7 +96,7 @@ export function SettingsPanel({ onClose }: SettingsPanelProps) {
         )}
       </div>
 
-      { }
+      {}
       <section aria-labelledby="settings-theme-heading">
         <h3
           id="settings-theme-heading"
@@ -107,12 +106,12 @@ export function SettingsPanel({ onClose }: SettingsPanelProps) {
         </h3>
         <ThemePicker currentTheme={currentTheme} onSelect={handleThemeSelect} />
         <p className="text-[var(--muted)] text-xs mt-2">
-          Active: <span className="text-[var(--fg)]">{currentTheme}</span>
-          {' '}— or type <span className="text-[var(--accent)]">theme list</span>
+          Active: <span className="text-[var(--fg)]">{currentTheme}</span> — or type{' '}
+          <span className="text-[var(--accent)]">theme list</span>
         </p>
       </section>
 
-      { }
+      {}
       <section aria-labelledby="settings-font-heading">
         <h3
           id="settings-font-heading"
@@ -121,7 +120,7 @@ export function SettingsPanel({ onClose }: SettingsPanelProps) {
           Font
         </h3>
 
-        { }
+        {}
         <div className="flex gap-2 mb-2">
           <input
             type="text"
@@ -154,7 +153,7 @@ export function SettingsPanel({ onClose }: SettingsPanelProps) {
           )}
         </div>
 
-        { }
+        {}
         <div className="flex gap-2 items-center" role="group" aria-label="Font size">
           {(['sm', 'md', 'lg'] as FontSize[]).map((s) => (
             <button
@@ -177,7 +176,7 @@ export function SettingsPanel({ onClose }: SettingsPanelProps) {
         </div>
       </section>
 
-      { }
+      {}
       <section aria-labelledby="settings-features-heading">
         <h3
           id="settings-features-heading"
@@ -201,7 +200,7 @@ export function SettingsPanel({ onClose }: SettingsPanelProps) {
         </div>
       </section>
 
-      { }
+      {}
       <section aria-labelledby="settings-danger-heading">
         <h3
           id="settings-danger-heading"
@@ -210,20 +209,15 @@ export function SettingsPanel({ onClose }: SettingsPanelProps) {
           Danger Zone
         </h3>
         <p className="text-[var(--muted)] text-xs">
-          Type{' '}
-          <span className="text-[var(--fg)]">reset --confirm</span>{' '}
-          to clear all saved preferences and reload.
+          Type <span className="text-[var(--fg)]">reset --confirm</span> to clear all saved
+          preferences and reload.
         </p>
       </section>
     </div>
   );
 
   if (!onClose) {
-    return (
-      <div className="border border-[var(--border)] p-4 max-w-lg">
-        {content}
-      </div>
-    );
+    return <div className="border border-[var(--border)] p-4 max-w-lg">{content}</div>;
   }
 
   return (
@@ -233,13 +227,9 @@ export function SettingsPanel({ onClose }: SettingsPanelProps) {
       aria-modal="true"
       aria-label="Settings"
     >
-      { }
-      <div
-        className="absolute inset-0 bg-black/60"
-        onClick={onClose}
-        aria-hidden="true"
-      />
-      { }
+      {}
+      <div className="absolute inset-0 bg-black/60" onClick={onClose} aria-hidden="true" />
+      {}
       <div className="relative bg-[var(--bg)] border border-[var(--border)] p-6 w-full max-w-lg max-h-[80vh] overflow-y-auto shadow-2xl">
         {content}
       </div>

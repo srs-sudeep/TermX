@@ -1,11 +1,10 @@
 import { useEffect } from 'react';
 
 interface KeyboardShortcutOptions {
-   
   onClearScreen: () => void;
-   
+
   onCancelInput: () => void;
-   
+
   onClearLine: () => void;
 }
 

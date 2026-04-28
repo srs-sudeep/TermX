@@ -42,7 +42,7 @@ export function StatusBar() {
       role="contentinfo"
       aria-label="Status bar"
     >
-      { }
+      {}
       <span className="inline-flex items-center gap-1.5">
         <span
           className={`
@@ -54,26 +54,30 @@ export function StatusBar() {
         <span>{online ? 'online' : 'offline'}</span>
       </span>
 
-      <span className="opacity-40" aria-hidden="true">│</span>
+      <span className="opacity-40" aria-hidden="true">
+        │
+      </span>
 
-      { }
+      {}
       <span className="inline-flex items-center gap-1.5 truncate">
         <span className="opacity-70">theme</span>
         <span className="text-[var(--accent)] truncate">{currentTheme}</span>
       </span>
 
-      <span className="opacity-40 hidden sm:inline" aria-hidden="true">│</span>
+      <span className="opacity-40 hidden sm:inline" aria-hidden="true">
+        │
+      </span>
 
-      { }
+      {}
       <span className="hidden sm:inline-flex items-center gap-1.5">
         <span className="opacity-70">cmds</span>
         <span className="text-[var(--fg)]">{commandHistory.length}</span>
       </span>
 
-      { }
+      {}
       <span className="ml-auto" />
 
-      { }
+      {}
       <span className="hidden md:inline-flex items-center gap-3">
         <span className="inline-flex items-center gap-1">
           <kbd className="px-1.5 py-0.5 rounded border border-[var(--border)] bg-[var(--selection)]/30 text-[var(--fg)]">
@@ -95,9 +99,11 @@ export function StatusBar() {
         </span>
       </span>
 
-      <span className="opacity-40 hidden md:inline" aria-hidden="true">│</span>
+      <span className="opacity-40 hidden md:inline" aria-hidden="true">
+        │
+      </span>
 
-      { }
+      {}
       <time
         dateTime={now.toISOString()}
         className="text-[var(--fg)] tabular-nums"

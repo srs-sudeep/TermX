@@ -1,5 +1,3 @@
- 
-
 import { create } from 'zustand';
 import { storage } from '@/lib/storage';
 import { settings } from '@/config';
@@ -7,15 +5,14 @@ import { settings } from '@/config';
 export type FontSize = 'sm' | 'md' | 'lg';
 
 interface ThemeState {
-   
   currentTheme: string;
-   
+
   customFont: string | null;
-   
+
   fontSize: FontSize;
-   
+
   typewriter: boolean;
-   
+
   bootEnabled: boolean;
 
   setTheme: (name: string) => void;
@@ -26,7 +23,6 @@ interface ThemeState {
 }
 
 export const useThemeStore = create<ThemeState>()((set) => ({
-  
   currentTheme: storage.get<string>('theme', settings.defaultTheme),
   customFont: storage.get<string | null>('font', null),
   fontSize: storage.get<FontSize>('fontSize', settings.defaultFontSize as FontSize),

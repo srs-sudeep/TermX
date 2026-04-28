@@ -8,15 +8,15 @@ import { Prompt } from './Prompt';
 
 interface TerminalInputProps {
   promptConfig: UserConfig['prompt'];
-   
+
   value: string;
-   
+
   onChange: (value: string) => void;
-   
+
   onSubmit: (value: string) => void;
-   
+
   disabled?: boolean;
-   
+
   registry?: Registry | null;
 }
 
@@ -49,7 +49,6 @@ export function TerminalInput({
 
   const handleKeyDown = useCallback(
     (e: KeyboardEvent<HTMLInputElement>) => {
-      
       if (e.key === 'ArrowUp' || e.key === 'ArrowDown') {
         historyKeyDown(e);
         return;
@@ -118,7 +117,7 @@ export function TerminalInput({
       data-terminal-input
       onClick={focus}
     >
-      { }
+      {}
       <span
         aria-hidden="true"
         className="
@@ -131,9 +130,9 @@ export function TerminalInput({
 
       <Prompt config={promptConfig} />
 
-      { }
+      {}
       <div className="relative flex-1 min-w-0 flex items-center">
-        { }
+        {}
         {ghostSuffix && (
           <div
             aria-hidden="true"
@@ -143,7 +142,7 @@ export function TerminalInput({
               'whitespace-pre overflow-hidden',
             )}
           >
-            { }
+            {}
             <span className="invisible">{value}</span>
             <span className="text-[var(--muted)]/50">{ghostSuffix}</span>
           </div>

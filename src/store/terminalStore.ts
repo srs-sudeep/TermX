@@ -1,5 +1,3 @@
- 
-
 import { create } from 'zustand';
 import { storage } from '@/lib/storage';
 import type { HistoryEntry, CommandOutput } from '@/types';
@@ -7,7 +5,6 @@ import type { HistoryEntry, CommandOutput } from '@/types';
 const MAX_COMMAND_HISTORY = 100;
 
 interface TerminalState {
-   
   history: HistoryEntry[];
 
   commandHistory: string[];
@@ -22,7 +19,6 @@ interface TerminalState {
 }
 
 export const useTerminalStore = create<TerminalState>()((set) => ({
-  
   history: [],
 
   commandHistory: storage.get<string[]>('history', []),
@@ -33,9 +29,7 @@ export const useTerminalStore = create<TerminalState>()((set) => ({
 
   updateOutput: (id, output) => {
     set((state) => ({
-      history: state.history.map((entry) =>
-        entry.id === id ? { ...entry, output } : entry,
-      ),
+      history: state.history.map((entry) => (entry.id === id ? { ...entry, output } : entry)),
     }));
   },
 
@@ -44,11 +38,9 @@ export const useTerminalStore = create<TerminalState>()((set) => ({
   },
 
   addToCommandHistory: (command) => {
-    
     if (command.trim() === '') return;
 
     set((state) => {
-
       const updated = [...state.commandHistory, command].slice(-MAX_COMMAND_HISTORY);
       storage.set('history', updated);
       return { commandHistory: updated };

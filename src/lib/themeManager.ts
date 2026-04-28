@@ -1,5 +1,3 @@
- 
-
 import { themes } from '@/config';
 import { settings } from '@/config';
 import type { FontSize } from '@/store/themeStore';
@@ -16,7 +14,7 @@ export function applyTheme(name: string): void {
     themes.find((t) => t.name === settings.defaultTheme) ??
     themes[0];
 
-  if (!theme) return; 
+  if (!theme) return;
 
   const el = document.documentElement;
 

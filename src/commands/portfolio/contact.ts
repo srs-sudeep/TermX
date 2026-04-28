@@ -22,9 +22,7 @@ export default {
       });
     }
 
-    const preferred = social.find(
-      (s) => s.name.toLowerCase() === contact.preferredContact,
-    );
+    const preferred = social.find((s) => s.name.toLowerCase() === contact.preferredContact);
     if (preferred) {
       items.push({
         label: preferred.name,

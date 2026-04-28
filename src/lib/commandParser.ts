@@ -1,5 +1,3 @@
- 
-
 import type { ParsedCommand } from '@/types';
 
 export class ParseError extends Error {
@@ -23,7 +21,7 @@ function tokenize(input: string): string[] {
 
     if (ch === '"' || ch === "'") {
       const openQuote = ch;
-      i++; 
+      i++;
 
       let token = '';
       while (i < input.length && input[i] !== openQuote) {
@@ -32,13 +30,10 @@ function tokenize(input: string): string[] {
       }
 
       if (i >= input.length) {
-        
-        throw new ParseError(
-          `Unterminated ${openQuote === '"' ? 'double' : 'single'} quote`,
-        );
+        throw new ParseError(`Unterminated ${openQuote === '"' ? 'double' : 'single'} quote`);
       }
 
-      i++; 
+      i++;
       tokens.push(token);
       continue;
     }
@@ -73,17 +68,14 @@ export function parse(input: string): ParsedCommand | null {
     const token = tokens[i];
 
     if (token.startsWith('--') && token.length > 2) {
-      
-      const eqIndex = token.indexOf('=', 2); 
+      const eqIndex = token.indexOf('=', 2);
 
       if (eqIndex !== -1) {
-        
         const key = token.slice(2, eqIndex);
         const value = token.slice(eqIndex + 1);
         flags[key] = value;
         i++;
       } else {
-        
         const key = token.slice(2);
         const next = tokens[i + 1];
 
@@ -91,22 +83,15 @@ export function parse(input: string): ParsedCommand | null {
           flags[key] = next;
           i += 2;
         } else {
-          
           flags[key] = true;
           i++;
         }
       }
-    } else if (
-      token.startsWith('-') &&
-      !token.startsWith('--') &&
-      token.length >= 2
-    ) {
-
+    } else if (token.startsWith('-') && !token.startsWith('--') && token.length >= 2) {
       const key = token.slice(1);
       flags[key] = true;
       i++;
     } else {
-      
       args.push(token);
       i++;
     }

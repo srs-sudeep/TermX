@@ -21,9 +21,7 @@ export default {
 
     const items: ListItem[] = all.map((cmd: Command) => {
       const aliasNote =
-        cmd.aliases && cmd.aliases.length > 0
-          ? ` (alias: ${cmd.aliases.join(', ')})`
-          : '';
+        cmd.aliases && cmd.aliases.length > 0 ? ` (alias: ${cmd.aliases.join(', ')})` : '';
       return {
         label: cmd.name,
         value: cmd.description + aliasNote,

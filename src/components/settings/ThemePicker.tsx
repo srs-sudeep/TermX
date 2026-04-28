@@ -21,11 +21,13 @@ export function ThemePicker({ currentTheme, onSelect }: ThemePickerProps) {
             onClick={() => onSelect(theme.name)}
             className={cn(
               'relative h-10 rounded border-2 overflow-hidden transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)]',
-              isActive ? 'border-[var(--accent)]' : 'border-transparent hover:border-[var(--muted)]',
+              isActive
+                ? 'border-[var(--accent)]'
+                : 'border-transparent hover:border-[var(--muted)]',
             )}
             style={{ backgroundColor: theme.colors.bg }}
           >
-            { }
+            {}
             <span className="absolute inset-0 flex items-center justify-center gap-1">
               <span
                 className="h-2 w-2 rounded-full"
@@ -40,7 +42,7 @@ export function ThemePicker({ currentTheme, onSelect }: ThemePickerProps) {
                 style={{ backgroundColor: theme.colors.error }}
               />
             </span>
-            { }
+            {}
             {isActive && (
               <span
                 className="absolute top-0.5 right-0.5 text-[8px] leading-none px-0.5 rounded"

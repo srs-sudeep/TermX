@@ -3,9 +3,7 @@ import type { Command, Education, Card } from '@/types';
 function toCard(edu: Education): Card {
   return {
     title: edu.degree,
-    subtitle: [edu.institution, `${edu.start} – ${edu.end}`]
-      .filter(Boolean)
-      .join(' · '),
+    subtitle: [edu.institution, `${edu.start} – ${edu.end}`].filter(Boolean).join(' · '),
     body: edu.details,
   };
 }

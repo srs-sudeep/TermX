@@ -9,7 +9,6 @@ import type { CommandContext, CommandOutput } from '@/types';
 let idCounter = 0;
 
 export function useTerminal() {
-  
   const registry = useMemo(() => createRegistry(), []);
   const [isProcessing, setIsProcessing] = useState(false);
 
@@ -75,7 +74,6 @@ export function useTerminal() {
           clear: clearHistory,
         },
         dispatch: (newInput: string) => {
-          
           void submit(newInput);
         },
       };
@@ -96,7 +94,6 @@ export function useTerminal() {
       }
 
       if (output.type === 'clear') {
-        
         clearHistory();
         return;
       }
@@ -106,7 +103,6 @@ export function useTerminal() {
         if (isExternal) {
           window.open(output.url, '_blank', 'noopener,noreferrer');
         } else {
-          
           window.location.href = output.url;
         }
         updateOutput(id, {

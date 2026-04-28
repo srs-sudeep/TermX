@@ -6,7 +6,7 @@ export default {
   description: 'Show the manual page for a command',
   usage: 'man <command>',
   category: 'core',
-  hidden: true, 
+  hidden: true,
   execute: (ctx) => {
     const name = ctx.args[0];
     if (!name) {

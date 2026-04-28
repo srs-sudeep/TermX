@@ -2,7 +2,6 @@ import { Settings, Folder, Search } from 'lucide-react';
 import { userConfig } from '@/config';
 
 interface TitleBarProps {
-   
   onGearClick: () => void;
 }
 
@@ -20,14 +19,14 @@ export function TitleBar({ onGearClick }: TitleBarProps) {
       "
       role="banner"
     >
-      { }
+      {}
       <div className="flex items-center gap-1.5" aria-hidden="true">
         <span className="inline-block w-3 h-3 rounded-full bg-[#ff5f57] shadow-[inset_0_0_0_1px_rgba(0,0,0,0.15)]" />
         <span className="inline-block w-3 h-3 rounded-full bg-[#ffbd2e] shadow-[inset_0_0_0_1px_rgba(0,0,0,0.15)]" />
         <span className="inline-block w-3 h-3 rounded-full bg-[#28c940] shadow-[inset_0_0_0_1px_rgba(0,0,0,0.15)]" />
       </div>
 
-      { }
+      {}
       <div
         className="
           absolute left-1/2 -translate-x-1/2
@@ -46,7 +45,7 @@ export function TitleBar({ onGearClick }: TitleBarProps) {
         </span>
       </div>
 
-      { }
+      {}
       <div className="ml-auto flex items-center gap-1.5">
         <button
           onClick={onGearClick}

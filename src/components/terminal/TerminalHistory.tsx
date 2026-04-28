@@ -18,7 +18,7 @@ export function TerminalHistory() {
           transition={{ duration: 0.18, ease: 'easeOut' }}
           className="mb-3"
         >
-          { }
+          {}
           {entry.input !== '' && (
             <div className="flex items-baseline flex-wrap gap-0">
               <Prompt config={userConfig.prompt} muted />
@@ -26,14 +26,14 @@ export function TerminalHistory() {
             </div>
           )}
 
-          { }
+          {}
           {entry.output !== null && (
             <div className="mt-0.5">
               <OutputRenderer output={entry.output} />
             </div>
           )}
 
-          { }
+          {}
           {entry.output === null && entry.input !== '' && (
             <div className="mt-1 inline-flex items-center gap-1 text-[var(--muted)]">
               <span className="inline-block w-1.5 h-1.5 rounded-full bg-[var(--muted)] animate-pulse" />

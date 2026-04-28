@@ -18,13 +18,7 @@ export function ListOutput({ items }: ListOutputProps) {
         const indentRem = Math.max(0, indent - 1) * 1.25;
 
         if (isBlank) {
-          return (
-            <div
-              key={idx}
-              className="col-span-2 h-3"
-              aria-hidden="true"
-            />
-          );
+          return <div key={idx} className="col-span-2 h-3" aria-hidden="true" />;
         }
 
         if (isHeader) {
@@ -48,9 +42,7 @@ export function ListOutput({ items }: ListOutputProps) {
             {item.label}
           </a>
         ) : (
-          <span className="text-[var(--prompt)] whitespace-nowrap">
-            {item.label}
-          </span>
+          <span className="text-[var(--prompt)] whitespace-nowrap">{item.label}</span>
         );
 
         const valueText = item.value ?? '';
@@ -59,20 +51,14 @@ export function ListOutput({ items }: ListOutputProps) {
 
         return (
           <Fragment key={idx}>
-            <div
-              className="font-mono"
-              style={{ paddingLeft: `${indentRem}rem` }}
-            >
+            <div className="font-mono" style={{ paddingLeft: `${indentRem}rem` }}>
               {labelEl}
             </div>
             <div className="text-[var(--fg)] min-w-0 break-words">
               {item.value && (
                 <>
                   {!valueStartsWithDash && (
-                    <span
-                      className="text-[var(--muted)] mr-2 select-none"
-                      aria-hidden="true"
-                    >
+                    <span className="text-[var(--muted)] mr-2 select-none" aria-hidden="true">
                       -
                     </span>
                   )}

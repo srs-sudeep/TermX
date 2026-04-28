@@ -38,7 +38,7 @@ export default function HackEffect() {
         clearInterval(interval);
         setDone(true);
       }
-    }, 150); 
+    }, 150);
 
     return () => clearInterval(interval);
   }, []);

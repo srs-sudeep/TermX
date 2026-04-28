@@ -59,7 +59,7 @@ export default {
 
     if (sub === 'size') {
       const sizeArg = ctx.args[1];
-      
+
       if (!sizeArg || !(VALID_SIZES as string[]).includes(sizeArg)) {
         return {
           type: 'error',

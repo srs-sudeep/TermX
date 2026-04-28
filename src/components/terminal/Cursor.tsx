@@ -1,7 +1,6 @@
 import { cn } from '@/lib/cn';
 
 interface CursorProps {
-   
   static?: boolean;
 }
 

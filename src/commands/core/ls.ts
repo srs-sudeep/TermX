@@ -7,14 +7,14 @@ export default {
   category: 'core',
   execute: () => {
     const entries = [
-      { name: 'about.txt',      description: 'Who I am' },
-      { name: 'projects/',      description: 'My work' },
-      { name: 'skills.txt',     description: 'Technical skills' },
-      { name: 'experience/',    description: 'Work history' },
-      { name: 'education.txt',  description: 'Where I studied' },
-      { name: 'contact.txt',    description: 'Get in touch' },
-      { name: 'social.txt',     description: 'Links & profiles' },
-      { name: 'resume.pdf',     description: 'Download my résumé' },
+      { name: 'about.txt', description: 'Who I am' },
+      { name: 'projects/', description: 'My work' },
+      { name: 'skills.txt', description: 'Technical skills' },
+      { name: 'experience/', description: 'Work history' },
+      { name: 'education.txt', description: 'Where I studied' },
+      { name: 'contact.txt', description: 'Get in touch' },
+      { name: 'social.txt', description: 'Links & profiles' },
+      { name: 'resume.pdf', description: 'Download my résumé' },
     ];
 
     const nameWidth = Math.max(...entries.map((e) => e.name.length));
