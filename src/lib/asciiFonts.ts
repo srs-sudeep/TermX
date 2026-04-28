@@ -1,5 +1,3 @@
- 
-
 type Glyph = readonly [string, string, string, string, string];
 
 const FONT: Readonly<Record<string, Glyph>> = {
@@ -54,10 +52,10 @@ const FONT: Readonly<Record<string, Glyph>> = {
 export function buildBanner(text: string): string {
   const upper = text.toUpperCase();
   const rows: string[][] = [[], [], [], [], []];
-  const fallback = FONT['?'] as Glyph;
+  const fallback = FONT['?'];
 
   for (const char of upper) {
-    const glyph: Glyph = (FONT[char] as Glyph | undefined) ?? fallback;
+    const glyph: Glyph = FONT[char] ?? fallback;
     for (let r = 0; r < 5; r++) {
       rows[r].push(glyph[r]);
     }

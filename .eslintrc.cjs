@@ -38,9 +38,7 @@ module.exports = {
         patterns: [
           {
             group: ['**/components/**', '**/hooks/**'],
-            importNames: [],
-            message:
-              'Commands must not import from components or hooks. Use types and lib only.',
+            message: 'Commands must not import from components or hooks. Use types and lib only.',
           },
         ],
       },

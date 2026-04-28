@@ -1,14 +1,13 @@
-import { useEffect, useState } from 'react';
-import { motion } from 'framer-motion';
 import { storage } from '@/lib/storage';
 import { useThemeStore } from '@/store/themeStore';
+import { motion } from 'framer-motion';
+import { useEffect, useState } from 'react';
 
 interface BootLine {
-   
   tag: 'OK' | '..' | '!!' | '';
-   
+
   text: string;
-   
+
   delay: number;
 }
 
@@ -20,15 +19,14 @@ const BOOT_LINES: BootLine[] = [
   { tag: 'OK', text: 'Applying theme ................................', delay: 600 },
   { tag: 'OK', text: 'Spawning shell at /home/visitor ...............', delay: 750 },
   { tag: 'OK', text: 'Establishing secure session ...................', delay: 900 },
-  { tag: '',   text: '',                                                delay: 1050 },
-  { tag: '..', text: 'Welcome aboard.',                                  delay: 1100 },
+  { tag: '', text: '', delay: 1050 },
+  { tag: '..', text: 'Welcome aboard.', delay: 1100 },
 ];
 
 const TOTAL_DURATION = 1500;
 const DONE_DELAY = 1550;
 
 interface BootSequenceProps {
-   
   onDone: (bootRan: boolean) => void;
 }
 
@@ -63,7 +61,7 @@ export function BootSequence({ onDone }: BootSequenceProps) {
     );
 
     return () => timers.forEach(clearTimeout);
-    
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const progress = Math.min(100, Math.round((visible / BOOT_LINES.length) * 100));
@@ -75,7 +73,7 @@ export function BootSequence({ onDone }: BootSequenceProps) {
       aria-live="polite"
       aria-label="Boot sequence"
     >
-      { }
+      {}
       <div className="space-y-0.5 text-sm leading-relaxed">
         {BOOT_LINES.slice(0, visible).map((line, idx) => {
           if (line.text === '' && line.tag === '') {
@@ -108,7 +106,7 @@ export function BootSequence({ onDone }: BootSequenceProps) {
         })}
       </div>
 
-      { }
+      {}
       <div className="mt-6 max-w-md">
         <div className="flex items-center justify-between mb-1.5 text-xs text-[var(--muted)]">
           <span>boot progress</span>
@@ -129,13 +127,11 @@ export function BootSequence({ onDone }: BootSequenceProps) {
           />
         </div>
         <div className="mt-1 text-[0.7em] text-[var(--muted)] tracking-wider">
-          {visible < BOOT_LINES.length
-            ? 'initializing services ...'
-            : 'ready.'}
+          {visible < BOOT_LINES.length ? 'initializing services ...' : 'ready.'}
         </div>
       </div>
 
-      { }
+      {}
       <div className="mt-6 max-w-md text-xs text-[var(--muted)] space-y-0.5">
         <div className="flex justify-between">
           <span className="opacity-70">build</span>

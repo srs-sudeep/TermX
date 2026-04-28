@@ -1,6 +1,6 @@
-import { describe, it, expect, beforeEach } from 'vitest';
 import { buildRegistry, createRegistry } from '@/lib/commandRegistry';
 import type { Command, CommandOutput } from '@/types';
+import { beforeEach, describe, expect, it } from 'vitest';
 
 // ── test helpers ───────────────────────────────────────────────────────────────
 
@@ -155,9 +155,7 @@ describe('commandRegistry', () => {
 
     it('returns only commands in the specified category', () => {
       const portfolio = reg.byCategory('portfolio');
-      expect(portfolio.map((c) => c.name)).toEqual(
-        expect.arrayContaining(['about', 'projects']),
-      );
+      expect(portfolio.map((c) => c.name)).toEqual(expect.arrayContaining(['about', 'projects']));
       expect(portfolio.every((c) => c.category === 'portfolio')).toBe(true);
     });
 
@@ -262,10 +260,7 @@ describe('commandRegistry', () => {
     });
 
     it('does not throw for a registry with no collisions', () => {
-      const cmds = [
-        makeCmd('clear', { aliases: ['cls'] }),
-        makeCmd('about', { aliases: ['bio'] }),
-      ];
+      const cmds = [makeCmd('clear', { aliases: ['cls'] }), makeCmd('about', { aliases: ['bio'] })];
       expect(() => buildRegistry(cmds)).not.toThrow();
     });
   });
@@ -302,8 +297,6 @@ describe('commandRegistry', () => {
 
   describe('createRegistry()', () => {
     it('returns a Registry object with the expected methods', () => {
-      // Phase 4 has no command files; the glob returns {}.
-      // createRegistry() should still produce a valid (empty) registry.
       const reg = createRegistry();
       expect(typeof reg.resolve).toBe('function');
       expect(typeof reg.all).toBe('function');
@@ -311,14 +304,23 @@ describe('commandRegistry', () => {
       expect(typeof reg.complete).toBe('function');
     });
 
-    it('resolve returns undefined for any name when no command files exist', () => {
+    it('discovers commands from the src/commands tree', () => {
       const reg = createRegistry();
-      expect(reg.resolve('about')).toBeUndefined();
+      expect(reg.resolve('help')).toBeDefined();
+      expect(reg.resolve('about')).toBeDefined();
+      expect(reg.resolve('clear')).toBeDefined();
     });
 
-    it('all() returns an empty array when no command files exist', () => {
-      // customCommands in commands.config.ts is also empty in the starter config
-      expect(createRegistry().all()).toHaveLength(0);
+    it('all() returns at least the core/portfolio commands', () => {
+      const reg = createRegistry();
+      const names = reg.all().map((c) => c.name);
+      expect(names.length).toBeGreaterThan(5);
+      expect(names).toContain('help');
+    });
+
+    it('resolves command aliases discovered from disk', () => {
+      const reg = createRegistry();
+      expect(reg.resolve('cls')).toBe(reg.resolve('clear'));
     });
   });
 });

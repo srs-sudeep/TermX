@@ -1,5 +1,5 @@
-import type { Command } from '@/types';
 import { STORAGE_NAMESPACE } from '@/lib/storage';
+import type { Command } from '@/types';
 
 export default {
   name: 'reset',
@@ -30,7 +30,7 @@ export default {
       }
       keysToRemove.forEach((k) => localStorage.removeItem(k));
     } catch {
-      
+      void 0;
     }
 
     setTimeout(() => window.location.reload(), 800);

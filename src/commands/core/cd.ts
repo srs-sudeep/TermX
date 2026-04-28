@@ -21,10 +21,7 @@ export default {
     if (!section) {
       return {
         type: 'text',
-        content: [
-          'Sections:',
-          VALID_SECTIONS.map((s) => `  ${s}`).join('\n'),
-        ].join('\n'),
+        content: ['Sections:', VALID_SECTIONS.map((s) => `  ${s}`).join('\n')].join('\n'),
         tone: 'muted',
       };
     }
@@ -39,5 +36,5 @@ export default {
     ctx.dispatch(section);
     return { type: 'text', content: `→ ${section}`, tone: 'muted' };
   },
-  autocomplete: (partial) => VALID_SECTIONS.filter((s) => s.startsWith(partial)),
+  autocomplete: (partial, _ctx) => VALID_SECTIONS.filter((s) => s.startsWith(partial)),
 } satisfies Command;

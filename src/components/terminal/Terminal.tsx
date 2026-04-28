@@ -74,7 +74,9 @@ export function Terminal({ bootRan = false }: TerminalProps) {
           promptConfig={userConfig.prompt}
           value={inputValue}
           onChange={setInputValue}
-          onSubmit={submit}
+          onSubmit={(input) => {
+            void submit(input);
+          }}
           disabled={isProcessing}
           registry={registry}
         />

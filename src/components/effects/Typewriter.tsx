@@ -1,14 +1,13 @@
-import { useState, useEffect } from 'react';
 import { useReducedMotion } from 'framer-motion';
+import { useEffect, useState } from 'react';
 
 interface TypewriterProps {
-   
   text: string;
-   
+
   speed?: number;
-   
+
   onDone?: () => void;
-   
+
   className?: string;
 }
 
@@ -17,7 +16,6 @@ export function Typewriter({ text, speed = 28, onDone, className }: TypewriterPr
   const [displayed, setDisplayed] = useState(reduce ? text : '');
 
   useEffect(() => {
-    
     if (reduce) {
       setDisplayed(text);
       onDone?.();
@@ -37,7 +35,7 @@ export function Typewriter({ text, speed = 28, onDone, className }: TypewriterPr
     }, speed);
 
     return () => clearInterval(id);
-    
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [text, speed, reduce]);
 
   return <span className={className}>{displayed}</span>;

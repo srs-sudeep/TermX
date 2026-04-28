@@ -1,4 +1,4 @@
-import type { Command, Project, Card } from '@/types';
+import type { Card, Command, Project } from '@/types';
 
 function toCard(p: Project): Card {
   return {
@@ -6,9 +6,7 @@ function toCard(p: Project): Card {
     subtitle: p.tagline,
     body: p.description,
     tags: p.tech,
-    links: Object.entries(p.links)
-      .filter(([, v]) => Boolean(v))
-      .map(([k, v]) => ({ label: k, url: v as string })),
+    links: Object.entries(p.links).flatMap(([k, v]) => (v ? [{ label: k, url: v }] : [])),
   };
 }
 
@@ -44,7 +42,5 @@ export default {
     return { type: 'cards', cards: list.map(toCard) };
   },
   autocomplete: (partial, ctx) =>
-    ctx.config.projects
-      .map((p) => p.slug)
-      .filter((s) => s.startsWith(partial)),
+    ctx.config.projects.map((p) => p.slug).filter((s) => s.startsWith(partial)),
 } satisfies Command;

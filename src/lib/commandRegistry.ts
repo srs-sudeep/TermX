@@ -65,7 +65,7 @@ export function createRegistry(): Registry {
   const modules = import.meta.glob<{ default: Command }>('../commands/**/*.ts', { eager: true });
 
   const globCommands: Command[] = Object.values(modules)
-    .map((mod: any) => mod.default)
+    .map((mod) => mod.default)
     .filter(isCommand);
 
   const mergedMap = new Map<string, Command>(

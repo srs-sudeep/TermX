@@ -1,5 +1,3 @@
- 
-
 export const STORAGE_NAMESPACE = 'termfolio:';
 
 function get<T>(key: string, fallback: T): T {
@@ -9,7 +7,6 @@ function get<T>(key: string, fallback: T): T {
 
     return JSON.parse(raw) as T;
   } catch {
-    
     return fallback;
   }
 }
@@ -18,7 +15,7 @@ function set<T>(key: string, value: T): void {
   try {
     localStorage.setItem(`${STORAGE_NAMESPACE}${key}`, JSON.stringify(value));
   } catch {
-    
+    void 0;
   }
 }
 
@@ -26,7 +23,7 @@ function remove(key: string): void {
   try {
     localStorage.removeItem(`${STORAGE_NAMESPACE}${key}`);
   } catch {
-    
+    void 0;
   }
 }
 

@@ -18,7 +18,8 @@ export function useScrollToBottom(deps: unknown[]): RefObject<HTMLDivElement> {
     });
 
     return () => window.cancelAnimationFrame(raf);
-  }, deps); 
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, deps);
 
   return ref;
 }
