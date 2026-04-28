@@ -2,7 +2,15 @@
 
 > A terminal-emulator portfolio — fully data-driven, forkable in 10 minutes.
 
-**Live demo → [termx.vercel.app](https://termx.vercel.app)**
+[![Repository](https://img.shields.io/badge/Repository-srs--sudeep%2FTermX-181717?logo=github&logoColor=white)](https://github.com/srs-sudeep/Termx)
+[![Live Demo](https://img.shields.io/badge/Live%20Demo-termx.vercel.app-000000?logo=vercel&logoColor=white)](https://termx.vercel.app/)
+[![Video Demo](https://img.shields.io/badge/Video%20Demo-YouTube-FF0000?logo=youtube&logoColor=white)](https://youtu.be/-oJOWGoLEAc)
+
+**Links**
+
+- 📦 **Repository** — [github.com/srs-sudeep/Termx](https://github.com/srs-sudeep/Termx)
+- 🌐 **Live Demo** — [termx.vercel.app](https://termx.vercel.app/)
+- 🎬 **Video Demo** — [youtu.be/-oJOWGoLEAc](https://youtu.be/-oJOWGoLEAc)
 
 ![TermX hero](public/hero.png)
 

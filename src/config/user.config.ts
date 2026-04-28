@@ -100,6 +100,21 @@ export const userConfig = {
       featured: true,
       year: 2024,
     },
+    {
+      slug: 'termx',
+      name: 'TermX',
+      tagline: 'Terminal-emulator portfolio, fully data-driven.',
+      description:
+        'A terminal-style portfolio built with React, TypeScript, and Vite. Features 14 themes, oh-my-zsh-inspired powerline prompt, ghost-text autocomplete, command history, boot sequence, and a Matrix-rain easter egg.',
+      tech: ['React', 'TypeScript', 'Vite', 'TailwindCSS', 'Zustand', 'Vitest'],
+      links: {
+        live: 'https://termx.vercel.app/',
+        repo: 'https://github.com/srs-sudeep/Termx',
+        demo: 'https://youtu.be/-oJOWGoLEAc',
+      },
+      featured: true,
+      year: 2026,
+    },
   ],
 
   skills: [
